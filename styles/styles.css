@@ -417,7 +417,7 @@ section {
     justify-content: center;
 }
 .profile_image img {
-    background-color: #F45815;
+    background-color: #f45815b4;
     border-radius: 50%;
     width: 300px;
     height: 300px;
@@ -440,6 +440,7 @@ section {
     display: grid;
     height: fit-content;
     grid-template-columns: repeat(2, 1fr);
+    margin-top: 70px;
 }
 
 .my_story_profile {
@@ -495,6 +496,7 @@ section {
     justify-content: center;
     align-items: center;
     padding: 20px;
+    margin-top: 50px;
 }
 .wrapper-diamond {
     transform: rotate(45deg);
