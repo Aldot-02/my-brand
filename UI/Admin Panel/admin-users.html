@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../styles/admin-panel.css">
+    <title>Manage Your Users</title>
+</head>
+<body>
+    <div class="container">
+        <section class="sidebar-nav">
+            <div class="sidebar-header menu-link">
+                <div class="admin-profile">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+                <div class="admin-details-top">
+                    <p class="admin-name">Aldo Twizerimana</p>
+                    <p class="admin-role">Administrator</p>
+                </div>
+            </div>
+            <div class="sidebar-navigation">
+                <a href="admin-home.html">
+                    <div class="nav-link menu-link">
+                        <div class="nav-card">
+                            <i class="fa-regular fa-message"></i>
+                            <p>Dashboard</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="admin-users.html">
+                    <div class="nav-link menu-link active">
+                        <div class="nav-card">
+                            <i class="fa-regular fa-message"></i>
+                            <p>Users</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="admin-blogs.html">
+                    <div class="nav-link menu-link">
+                        <div class="nav-card">
+                            <i class="fa-regular fa-message"></i>
+                            <p>Blogs</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="admin-projects.html">
+                    <div class="nav-link menu-link">
+                        <div class="nav-card">
+                            <i class="fa-regular fa-message"></i>
+                            <p>Work</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="admin-media.html">
+                    <div class="nav-link menu-link">
+                        <div class="nav-card">
+                            <i class="fa-regular fa-message"></i>
+                            <p>Media</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="admin-settings.html">
+                    <div class="nav-link menu-link">
+                        <div class="nav-card">
+                            <i class="fa-regular fa-message"></i>
+                            <p>Settings</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+        <section class="dashboard-content">
+            <div class="searchbar-top">
+                <div class="top-header-nav">
+                    <span>Users</span>
+                </div>
+                <div class="searchbar-section">
+                    <form>
+                        <input type="search" name="" id="" placeholder="Search" class="search">
+                    </form>
+                    <i class="fa-solid fa-bell"></i>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
+            </div>
+            <div class="dashboard-main-content">
+                <div class="users-stats-col">
+                    <div class="all-users">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email Address</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><i class="fa-regular fa-user"></i>John</td>
+                                    <td>Doe</td>
+                                    <td>john.doe@example.com</td>
+                                    <td><button class="delete-btn">Delete</button></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fa-regular fa-user"></i>Jane</td>
+                                    <td>Smith</td>
+                                    <td>jane.smith@example.com</td>
+                                    <td><button class="delete-btn">Delete</button></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fa-regular fa-user"></i>Alex</td>
+                                    <td>Johnson</td>
+                                    <td>alex.johnson@example.com</td>
+                                    <td><button class="delete-btn">Delete</button></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fa-regular fa-user"></i>Emily</td>
+                                    <td>Williams</td>
+                                    <td>emily.williams@example.com</td>
+                                    <td><button class="delete-btn">Delete</button></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fa-regular fa-user"></i>Aldo</td>
+                                    <td>Twizerimana</td>
+                                    <td>twizald.02@example.com</td>
+                                    <td><button class="delete-btn">Delete</button></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fa-regular fa-user"></i>Feza</td>
+                                    <td>Aline</td>
+                                    <td>feza.aline@example.com</td>
+                                    <td><button class="delete-btn">Delete</button></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fa-regular fa-user"></i>Amir</td>
+                                    <td>Sebunyange</td>
+                                    <td>feza.aline@example.com</td>
+                                    <td><button class="delete-btn">Delete</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="user-controller-btns">
+                            <button class="user-btn">Prev</button>
+                            <button class="user-btn non-active-btn">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

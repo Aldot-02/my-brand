@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../styles/admin-panel.css">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <div class="container">
+        <section class="sidebar-nav">
+            <div class="sidebar-header menu-link">
+                <div class="admin-profile">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+                <div class="admin-details-top">
+                    <p class="admin-name">Aldo Twizerimana</p>
+                    <p class="admin-role">Administrator</p>
+                </div>
+            </div>
+            <div class="sidebar-navigation">
+                <a href="#"></a><div class="nav-link menu-link active">
+                    <div class="nav-card">
+                        <i class="fa-regular fa-message"></i>
+                        <p>Dashboard</p>
+                    </div>
+                </div>
+                <a href="admin-users.html">
+                    <div class="nav-link menu-link">
+                        <div class="nav-card">
+                            <i class="fa-regular fa-message"></i>
+                            <p>Users</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="admin-blogs.html">
+                    <div class="nav-link menu-link">
+                        <div class="nav-card">
+                            <i class="fa-regular fa-message"></i>
+                            <p>Blogs</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="admin-projects.html">
+                    <div class="nav-link menu-link">
+                        <div class="nav-card">
+                            <i class="fa-regular fa-message"></i>
+                            <p>Work</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="admin-media.html">
+                    <div class="nav-link menu-link">
+                        <div class="nav-card">
+                            <i class="fa-regular fa-message"></i>
+                            <p>Media</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="admin-settings.html">
+                    <div class="nav-link menu-link">
+                        <div class="nav-card">
+                            <i class="fa-regular fa-message"></i>
+                            <p>Settings</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+        <section class="dashboard-content">
+            <div class="searchbar-top">
+                <div class="top-header-nav">
+                    <span>Dashboard</span>
+                </div>
+                <div class="searchbar-section">
+                    <form>
+                        <input type="search" name="" id="" placeholder="Search" class="search">
+                    </form>
+                    <i class="fa-solid fa-bell"></i>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
+            </div>
+            <div class="dashboard-main-content">
+                <div class="left-stats-col">
+                    <div class="left-top-stats">
+                        <div class="left-top-stats-card">
+                            <div class="card-header">
+                                <i class="fa-regular fa-user"></i>
+                                <p>Total users</p>
+                            </div>
+                            <div class="card-numbers">
+                                <p class="color">69</p>
+                            </div>
+                        </div>
+                        <div class="left-top-stats-card">
+                            <div class="card-header">
+                                <i class="fa-regular fa-user"></i>
+                                <p>Total Blogs</p>
+                            </div>
+                            <div class="card-numbers">
+                                <p class="color">69</p>
+                            </div>
+                        </div>
+                        <div class="left-top-stats-card">
+                            <div class="card-header">
+                                <i class="fa-regular fa-user"></i>
+                                <p>Total Projects</p>
+                            </div>
+                            <div class="card-numbers">
+                                <p class="color">69</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="left-stats-users">
+                        <h3>Latest Registered Users</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email Address</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><i class="fa-regular fa-user"></i>John</td>
+                                    <td>Doe</td>
+                                    <td>john.doe@example.com</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fa-regular fa-user"></i>Jane</td>
+                                    <td>Smith</td>
+                                    <td>jane.smith@example.com</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fa-regular fa-user"></i>Alex</td>
+                                    <td>Johnson</td>
+                                    <td>alex.johnson@example.com</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fa-regular fa-user"></i>Emily</td>
+                                    <td>Williams</td>
+                                    <td>emily.williams@example.com</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="right-stats-col">
+                    <p>All Blogs Were Liked By <span class="color">123</span> People.</p>
+                    <p>All Projects Were Opened By <span class="color">123</span> People.</p>
+                    <p><span class="color">123</span> People Downloaded The Resume</p>
+                    <p><span class="color">Want see who they are?</span></p>
+                    <p>Navigate me and get to know more details about who they are.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
