@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../styles/admin-panel.css">
+    <title>Manage Your Projects</title>
+</head>
+<body>
+    <div class="container">
+        <section class="sidebar-nav">
+            <div class="sidebar-header menu-link">
+                <div class="admin-profile">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+                <div class="admin-details-top">
+                    <p class="admin-name">Aldo Twizerimana</p>
+                    <p class="admin-role">Administrator</p>
+                </div>
+            </div>
+            <div class="sidebar-navigation">
+                <a href="admin-home.html">
+                    <div class="nav-link menu-link">
+                        <div class="nav-card">
+                            <i class="fa-solid fa-house"></i>
+                            <p>Dashboard</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="admin-users.html">
+                    <div class="nav-link menu-link">
+                        <div class="nav-card">
+                            <i class="fa-solid fa-users"></i>
+                            <p>Users</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="admin-blogs.html">
+                    <div class="nav-link menu-link">
+                        <div class="nav-card">
+                            <i class="fa-solid fa-blog"></i>
+                            <p>Blogs</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="admin-projects.html">
+                    <div class="nav-link menu-link active">
+                        <div class="nav-card">
+                            <i class="fa-solid fa-bars-progress"></i>
+                            <p>Work</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="admin-media.html">
+                    <div class="nav-link menu-link">
+                        <div class="nav-card">
+                            <i class="fa-solid fa-photo-film"></i>
+                            <p>Media</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="admin-settings.html">
+                    <div class="nav-link menu-link">
+                        <div class="nav-card">
+                            <i class="fa-solid fa-gear"></i>
+                            <p>Settings</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+        <section class="dashboard-content">
+            <div class="searchbar-top">
+                <div class="top-header-nav">
+                    <span>Users</span>
+                </div>
+                <div class="searchbar-section">
+                    <form>
+                        <input type="search" name="" id="" placeholder="Search" class="search">
+                    </form>
+                    <i class="fa-solid fa-bell"></i>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
+            </div>
+            <div class="dashboard-main-content">
+                <div class="projects-stats-col">
+                    <div class="projects-controller-btns done">
+                        <a href="./admin-projects.html"><button class="user-btn">Done</button></a>
+                    </div>
+                    <div class="add-project">
+                        <div class="Project_preview">
+                            <h3>Project Preview</h3>
+                            <div class="project">
+                                <div class="project_icons">
+                                    <i class="fa-regular fa-folder project_folder"></i>
+                                    <div class="external">
+                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                    </div>
+                                </div>
+                                <h2>RoomTr Radar</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam, cumque. Dignissimos nobis impedit, esse aperiam repellendus commodi accusantium dolorem harum?</p>
+                                <div class="languages">
+                                    <ul>
+                                        <li>Python</li>
+                                        <li>Flask</li>
+                                        <li>JS</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="right contact">
+                            <form>
+                                <h3>Project's Information</h3>
+                                <input type="text" placeholder="Project's Title">
+                                <textarea wrap="soft" placeholder="Project’s Description (Max = 50 words)" required></textarea>
+                            </form>
+                            <form>
+                                <h3>3 Topmost Technologies Used</h3>
+                                <input type="text" placeholder="Technology 1">
+                                <input type="text" placeholder="Technology 2">
+                                <input type="text" placeholder="Technology 3">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
