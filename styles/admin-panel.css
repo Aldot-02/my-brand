@@ -250,6 +250,8 @@ td i {
     border-radius: 50%;
     border: 0.3px solid #F45815;
     color: #fff;
+    width: 25px;
+    height: 25px;
 }
 .blogs-stats-col {
     height: 100%;
@@ -775,6 +777,8 @@ textarea:focus {
         border-radius: 50%;
         border: 0.3px solid #F45815;
         color: #fff;
+        width: 25px;
+        height: 25px;
     }
     .blogs-stats-col {
         height: 100%;
