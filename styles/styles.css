@@ -1694,7 +1694,55 @@ margin-bottom: 20px;
     
     /* THE END OF INDEX SECTION STYLING */
     
+    /* STYLING THE BLOG SECTION */
+    .blogs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        height: fit-content;
+        grid-auto-rows: minmax(300px, auto);
+        gap: 10px;
+    }
     
+    .blogs .post {
+        background: url(/images/about.avif);
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: end;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    
+    .post_content {
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 16px;
+        width: 100%;
+        box-sizing: border-box;
+        position: relative;
+    }
+    
+    .post .post_content .publication-date {
+        font-size: 12px;
+        color: rgba(250, 235, 215, 0.63);
+        margin-bottom: 5px;
+    }
+    
+    .post .post_content .headline {
+        font-size: 15px;
+        color: rgba(250, 235, 215, 0.815);
+        margin-bottom: 12px;
+    }
+    
+    .post .post_content .author {
+        font-size: 12px;
+        color: rgba(250, 235, 215, 0.63);
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+    }
+    
+    /* END OF BLOG SECTION STYLING */
     /* THE END OF THE MAIN SECTION STYLING */
     
     
@@ -2156,7 +2204,7 @@ margin-bottom: 20px;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         height: fit-content;
-        grid-auto-rows: minmax(200px, auto);
+        grid-auto-rows: minmax(300px, auto);
         gap: 10px;
     }
     
