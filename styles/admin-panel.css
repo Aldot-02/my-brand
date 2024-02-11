@@ -115,6 +115,9 @@ a {
     margin-right: 20px;
     font-size: 20px;
 }
+.hamburger {
+    display: none;
+}
 
 /* ADMIN HOME MAIN SECTION */
 .container .dashboard-content {
@@ -243,18 +246,34 @@ td i {
 
 /* USERS SECTION */
 
+.users-stats-col{
+    background-color: #0C2342;
+    border-radius: 6px;
+    color: #ffffff80;
+    margin-top: 20px;
+    width: 100%;
+    padding: 15px;
+}
+.user-controller-btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+    padding: 0 10px;
+}
+
 /* BLOGS SECTION */
-.fa-check {
-    padding: 5px;
-    font-size: 20px;
+.checker {
     border-radius: 50%;
-    border: 0.3px solid #F45815;
+    padding: 10px;
     color: #fff;
-    width: 25px;
-    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.4px solid #F45815;
 }
 .blogs-stats-col {
-    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -265,6 +284,7 @@ td i {
     justify-content: space-between;
     align-self: flex-end;
     margin-bottom: 20px;
+    padding-left: 10px;
 }
 .user-btn {
     background-color: #F45815;
@@ -289,12 +309,11 @@ td i {
     border-radius: 6px;
     color: #ffffff80;
     width: 100%;
-    height: calc(100% - 40px);
     padding: 15px;
 }
 .blogs {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     height: fit-content;
     grid-auto-rows: minmax(200px, auto);
     gap: 10px;
@@ -309,6 +328,13 @@ td i {
     justify-content: end;
     border-radius: 4px;
     overflow: hidden;
+}
+.user-controller-btns-blogs{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
 }
 
 .post_content {
@@ -386,6 +412,11 @@ td i {
     justify-content: space-between;
     align-self: flex-end;
     margin-bottom: 20px;
+}
+.user-controller-btns-projects {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .done {
     width: auto;
@@ -541,9 +572,9 @@ textarea:focus {
 /* END ADDING NEW PROJECT SECTION */
 
 
-/* MEDIA SECTION */
+/* CERTIFICATIONS SECTION */
 .media-stats-col {
-    height: 100%;
+    /* height: 100%; */
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -555,13 +586,18 @@ textarea:focus {
     align-self: flex-end;
     margin-bottom: 20px;
 }
+.user-controller-btns-certifications {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
 .all-photos {
     background-color: #0C2342;
     border-radius: 6px;
     color: #ffffff80;
     width: 100%;
     padding: 15px;
-    height: calc(100% - 53px);
+    height: auto;
     overflow: scroll;
 }
 .media-section {
@@ -579,379 +615,4 @@ textarea:focus {
     background-position: center;
     background-image: url(../images/profile.jpg);
 }
-.hamburger {
-    display: none;
-}
-
-/* RESPONSIVENESS */
-
-@media only screen and (min-width: 500px) and (max-width: 1022px) {
-    .hamburger {
-        display: inline;
-        color: #ffffff80;
-        font-size: 30px;
-    }
-    .container {
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
-        width: 100vw;
-        padding: 20px;
-    }
-    .sidebar-nav {
-        width: 100%;
-        height: 70px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background-color: transparent;
-        position: relative;
-    }
-    .sidebar-nav .sidebar-header {
-        width: fit-content;
-        height: fit-content;
-        display: flex;
-        align-items: center;
-        margin: 0;
-        padding: 0;
-        background-color: transparent;
-        
-    }
-    .sidebar-nav .sidebar-header .admin-profile {
-        background-color: #0C2342;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 6px;
-        border: none;
-    }
-    .sidebar-nav .sidebar-header .admin-profile i{
-        font-size: 30px;
-        color: #ffffff80;
-    }
-    .sidebar-nav .sidebar-header .admin-details-top{
-        display: none;
-    }
-    .menu-link{
-        padding: 0;
-    }
-    
-    .sidebar-nav .sidebar-navigation {
-        display: none;
-    }
-    a {
-        text-decoration: none;
-    }
-    .color {
-        color: #F45815;
-    }
-    
-    /* ADMIN HOME MAIN SECTION */
-    .container .dashboard-content {
-        padding: 0;
-        width: 100%;
-        position: relative;
-        /* margin-top: 70px; */
-        display: flex;
-        flex-direction: column;
-    }
-    .container .dashboard-content .searchbar-top {
-        margin-top: 20px;
-    }
-    .container .dashboard-content .dashboard-main-content{
-        width: 100%;
-        margin-top: 20px;
-        height: auto;
-        display: flex;
-    }
-    .container .dashboard-content .dashboard-main-content .left-stats-col {
-        width: 100%;
-        height: 100%;
-    }
-    .left-top-stats {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-    }
-    .left-top-stats-card {
-        width: 31.33%;
-        height: 200px;
-        padding: 20px;
-        color: #ffffff80;
-        
-    }
-    .card-header i{
-        font-size: 20px;
-    }
-    .card-header p{
-        font-size: 17px;
-        font-weight: 400;
-        align-self: flex-end;
-    }
-    .card-numbers {
-        font-size: 40px;
-    }
-    .left-stats-users {
-        background-color: #0C2342;
-        border-radius: 6px;
-        color: #ffffff80;
-        margin-top: 20px;
-        width: 100%;
-        height: auto;
-        padding: 15px;
-    }
-    .right-stats-col {
-        display: none;
-    }
-    .left-stats-users h3 {
-        font-size: 20px;
-        font-weight: 400;
-        margin-bottom: 15px;
-    }
-    table {
-        border-collapse: collapse;
-        width: 100%;
-    }
-    th, td {
-        padding: 10px;
-        text-align: left;
-    }
-    td i {
-        margin-right: 10px;
-        border-radius: 50%;
-        background-color: #0A192F;
-        padding: 8px;
-        color: #ffffff80;
-    }
-    
-    /* USERS SECTION */
-    .user-btn {
-        background-color: #F45815;
-        color: #fff;
-        padding: 10px 15px;
-        border: none;
-        font-size: 14px;
-        border-radius: 6px;
-        cursor: pointer;
-    }
-    .delete-btn {
-        background-color: red;
-        color: #fff;
-        padding: 10px 15px;
-        border: none;
-        font-size: 14px;
-        border-radius: 6px;
-        cursor: pointer;
-    }
-    .non-active-btn{
-        background-color: #ffffff20;
-    }
-    .all-users {
-        background-color: #0C2342;
-        border-radius: 6px;
-        color: #ffffff80;
-        width: 100%;
-        height: calc(100% - 10px);
-        padding: 15px;
-    }
-    
-    .users-stats-col {
-        width: 100%;
-        height: 100%;
-    }
-    .user-controller-btns {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 10px;
-    }
-    
-    
-    /* BLOGS SECTION */
-    .fa-check {
-        padding: 5px;
-        font-size: 20px;
-        border-radius: 50%;
-        border: 0.3px solid #F45815;
-        color: #fff;
-        width: 25px;
-        height: 25px;
-    }
-    .blogs-stats-col {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-    .blogs-controller-btns {
-        width: 220px;
-        display: flex;
-        justify-content: space-between;
-        align-self: flex-end;
-        margin-bottom: 20px;
-    }
-    .all-blogs {
-        background-color: #0C2342;
-        border-radius: 6px;
-        color: #ffffff80;
-        width: 100%;
-        height: calc(100% - 40px);
-        padding: 15px;
-    }
-    .blogs {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        height: fit-content;
-        grid-auto-rows: minmax(300px, auto);
-        gap: 10px;
-        margin-bottom: 15px;
-    }
-    
-    .blogs .post {
-        background: url(../images/about.avif);
-        background-size: cover;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: end;
-        border-radius: 4px;
-    }
-    
-    .post_content {
-        background-color: rgba(0, 0, 0, 0.8);
-        padding: 8px;
-        width: 100%;
-        box-sizing: border-box;
-        position: relative;
-        border-radius: 0 0 4px 4px;
-    }
-    
-    .post .post_content .publication-date {
-        font-size: 12px;
-        color: rgba(250, 235, 215, 0.63);
-        margin-bottom: 5px;
-    }
-    
-    .post .post_content .headline {
-        font-size: 16px;
-        color: rgba(250, 235, 215, 0.815);
-        margin-bottom: 16px;
-    }
-    
-    .post .post_content .author {
-        font-size: 14px;
-        color: rgba(250, 235, 215, 0.63);
-        position: absolute;
-        bottom: 3px;
-        right: 6px;
-    }
-    
-    
-    /* PROJECTS SECTION */
-    .projects-stats-col{
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-    .projects-controller-btns {
-        width: 240px;
-        display: flex;
-        justify-content: space-between;
-        align-self: flex-end;
-        margin-bottom: 20px;
-    }
-    .all-projects {
-        background-color: #0C2342;
-        border-radius: 6px;
-        color: #ffffff80;
-        width: 100%;
-        padding: 15px;
-        height: calc(100% - 53px);
-        overflow: scroll;
-    }
-    .work {
-        width: 100%;
-        height: fit-content;
-        display: flex;
-        align-items: center;
-        justify-self: center;
-        flex-direction: column;
-    }
-    
-    .work .work_section {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 5px;
-        margin-bottom: 40px;
-    }
-    
-    .project {
-        padding: 20px;
-    }
-    .project h2{
-        margin-bottom: 18px;
-    }
-    .project p {
-        font-size: 14px;
-    }
-    
-    .project_icons {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 30px;
-        align-items: center;
-    }
-    
-    .project_folder {
-        font-size: 30px;
-        color: #fff;
-    }
-    
-    .project_icons .external i {
-        margin-left: 13px;
-        color: #ffffffcb;
-        font-size: 18px;
-    }
-    /* MEDIA SECTION */
-    .media-stats-col {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-    .media-controller-btns {
-        width: 120px;
-        display: flex;
-        justify-content: space-between;
-        align-self: flex-end;
-        margin-bottom: 20px;
-    }
-    .all-photos {
-        background-color: #0C2342;
-        border-radius: 6px;
-        color: #ffffff80;
-        width: 100%;
-        padding: 15px;
-        height: calc(100% - 53px);
-        overflow: scroll;
-    }
-    .media-section {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-        margin-bottom: 30px;
-    }
-    .photo {
-        background-color: #123058;
-        border-radius: 4px;
-        cursor: pointer;
-        height: 200px;
-        background-size: cover;
-        background-position: center;
-        background-image: url(../images/profile.jpg);
-    }
-}
+/* END OF CERTIFICATION SECTION */

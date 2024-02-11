@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/styles.css">
+    <!-- <link rel="stylesheet" href="../styles/styles-responsiveness.css"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:wght@500&display=swap" rel="stylesheet">
@@ -41,7 +42,7 @@
                 <img src="../images/Image.png" alt="Aldo Twizerimana">
             </a>
             <div class="hamburger">
-                <i class="fa-solid fa-bars"></i>
+                <div class="bar"></div>
             </div>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
@@ -52,6 +53,13 @@
             </ul>
         </nav>
     </header>
+    <nav class="mobile-nav">
+        <a href="#about" class="remove-mobile-nav">About</a>
+        <a href="#work" class="remove-mobile-nav">Work</a>
+        <a href="#blog" class="remove-mobile-nav">Blog</a>
+        <a href="#contact" class="remove-mobile-nav">Contact</a>
+        <a href="../Authentication/signup.html" class="remove-mobile-nav">Login</a>
+    </nav>
     <main class="container">
         <aside class="left_col">
             <div class="diamonds">
@@ -111,20 +119,17 @@
                     </div>
                 </div>
                 <div class="profile_image">
-                    <a href="#"><img src="../images/about_me.png" alt="" class="index_image"></a>
+                    <img src="../images/profile.jpg" alt="">
                 </div>
             </div>
 
             <!-- ABOUT SECTION -->
-            <div class="about margin-scroll" id="about">
-                <div class="about-card my_story_profile">
-                    <div class="img-container">
-
-                    </div>
-                    <img src="../images/profile.jpg" alt="">
+            <div class="about" id="about">
+                <div class="about-card skills">
+                    <i class="fa-solid fa-head-side-virus"></i>
+                    <h2>My Story</h2>
                 </div>
                 <div class="about-card my_story">
-                    <h2>My Story</h2>
                     <p><em><q class="quote">Think the design, and Design the Thinking.</q></em></p>
                     <p>I'm a design-minded, detail oriented software engineer passionate about combining beautiful code with beautiful design.</p>
                     <p>I love learning new and better ways to create seamless user experiences with clean, efficient, and scalable code. I consider work an ongoing education, and I'm always looking for opportunities to work with those who are willing to share their knowledge as much as I want to learn. At the end of the day, my primary goal is to create something beautiful with people that bring out the best in me.</p>
@@ -152,44 +157,44 @@
                     <i class="fa-solid fa-head-side-virus"></i>
                     <h2>My Skills</h2>
                 </div>
-                <div class="about-card what_I_do">
-                    <h2>The Things I do</h2>
-                    <div class="offerings">
-                        <div class="services">
-                            <div class="item">
-                                <i class="fa-solid fa-splotch"></i>
-                                <h3>Web Development</h3>
-                            </div>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam a similique animi at. Quo veniam assumenda maiores sapiente, officia ipsam excepturi quos delectus alias facilis ipsa eos minus, exercitationem est.20</p>
+            </div>
+            <div class="about-card what_I_do">
+                <h2>The Things I do</h2>
+                <div class="offerings">
+                    <div class="services">
+                        <div class="item">
+                            <i class="fa-solid fa-splotch"></i>
+                            <h3>Web Development</h3>
                         </div>
-                        <div class="services">
-                            <div class="item">
-                                <i class="fa-solid fa-splotch"></i>
-                                <h3>Web Development</h3>
-                            </div>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam a similique animi at. Quo veniam assumenda maiores sapiente, officia ipsam excepturi quos delectus alias facilis ipsa eos minus, exercitationem est.20</p>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam a similique animi at. Quo veniam assumenda maiores sapiente, officia ipsam excepturi quos delectus alias facilis ipsa eos minus, exercitationem est.20</p>
+                    </div>
+                    <div class="services">
+                        <div class="item">
+                            <i class="fa-solid fa-splotch"></i>
+                            <h3>Web Development</h3>
                         </div>
-                        <div class="services">
-                            <div class="item">
-                                <i class="fa-solid fa-splotch"></i>
-                                <h3>Web Development</h3>
-                            </div>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam a similique animi at. Quo veniam assumenda maiores sapiente, officia ipsam excepturi quos delectus alias facilis ipsa eos minus, exercitationem est.20</p>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam a similique animi at. Quo veniam assumenda maiores sapiente, officia ipsam excepturi quos delectus alias facilis ipsa eos minus, exercitationem est.20</p>
+                    </div>
+                    <div class="services">
+                        <div class="item">
+                            <i class="fa-solid fa-splotch"></i>
+                            <h3>Web Development</h3>
                         </div>
-                        <div class="services">
-                            <div class="item">
-                                <i class="fa-solid fa-splotch"></i>
-                                <h3>Web Development</h3>
-                            </div>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam a similique animi at. Quo veniam assumenda maiores sapiente, officia ipsam excepturi quos delectus alias facilis ipsa eos minus, exercitationem est.20</p>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam a similique animi at. Quo veniam assumenda maiores sapiente, officia ipsam excepturi quos delectus alias facilis ipsa eos minus, exercitationem est.20</p>
+                    </div>
+                    <div class="services">
+                        <div class="item">
+                            <i class="fa-solid fa-splotch"></i>
+                            <h3>Web Development</h3>
                         </div>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam a similique animi at. Quo veniam assumenda maiores sapiente, officia ipsam excepturi quos delectus alias facilis ipsa eos minus, exercitationem est.20</p>
                     </div>
                 </div>
             </div>
 
             <!-- WORK SECTIN -->
 
-            <div class="work margin-scroll" id="work">
+            <div class="work" id="work">
                 <h1>Noteworthy projects I have worked on</h1>
                 <div class="work_section">
                     <div class="project">
@@ -402,7 +407,7 @@
 
             <!-- BLOGS SECTION -->
 
-            <div class="blog_post margin-scroll" id="blog">
+            <div class="blog_post" id="blog">
                 <h1>My recent publications</h1>
                 <div class="blogs">
                     <div class="post">
@@ -487,34 +492,36 @@
                         </a>
                     </div>
                 </div>
+            </div>
+            <div class="blog-btn">
                 <button class="read-more-btn">Read More Stories</button>
             </div>
 
             <!-- CONTACT PAGE -->
             <div class="class_section" id="contact">
-                <div class="contact">
-                    <div class="personal_contact">
-                        <div class="contact_title">
-                            <h2>Faster communication</h2>
-                            <div class="contact_underline"></div>
-                        </div>
-                        <div class="flex_contact">
-                            <div class="fast_contact">
-                                <i class="fa-solid fa-phone"></i>
-                                <div>
-                                    <p>Email me</p>
-                                    <p><a href="">twizald.02@gmail.com</a></p>
-                                </div>
+                <div class="personal_contact">
+                    <div class="contact_title">
+                        <h2>Faster communication</h2>
+                        <div class="contact_underline"></div>
+                    </div>
+                    <div class="flex_contact">
+                        <div class="fast_contact">
+                            <i class="fa-solid fa-phone"></i>
+                            <div>
+                                <p>Email me</p>
+                                <p><a href="">twizald.02@gmail.com</a></p>
                             </div>
-                            <div class="fast_contact">
-                                <i class="fa-regular fa-envelope"></i>
-                                <div>
-                                    <p>contact me</p>
-                                    <p>+250 789 764 748</p>
-                                </div>
+                        </div>
+                        <div class="fast_contact">
+                            <i class="fa-regular fa-envelope"></i>
+                            <div>
+                                <p>contact me</p>
+                                <p>+250 789 764 748</p>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="contact">
                     <form action="">
                         <h3>GET IN TOUCH</h3>
                         <input type="text" id="name" placeholder="Your name" required>
@@ -524,30 +531,30 @@
                         <button type="submit">Send</button>
                     </form>
                 </div>
-                <div class="social_res-icons">
-                    <a href="mailto:twizald.02@gmail.com">
-                        <i class="fa-regular fa-envelope"></i>
-                    </a>
-                    <a href="https://github.com/Aldot-02" target="_blank">
-                        <i class="fa-brands fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/aldot-/" target="_blank">
-                        <i class="fa-brands fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://twitter.com/twizald" target="_blank">
-                        <i class="fa-brands fa-twitter"></i>
-                    </a>
-                    <a href="https://www.instagram.com/sprout.ta/" target="_blank">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-                </div>
-                <footer>
-                    <p class="copyright">Designed and Built By Aldo Twizerimana</p>
-                    <p class="git_ratings">Follow me on my <a href="https://github.com/Aldot-02">Github</a></p>
-                </footer>
             </div>
+            <div class="social_res-icons">
+                <a href="mailto:twizald.02@gmail.com">
+                    <i class="fa-regular fa-envelope"></i>
+                </a>
+                <a href="https://github.com/Aldot-02" target="_blank">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/aldot-/" target="_blank">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="https://twitter.com/twizald" target="_blank">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+                <a href="https://www.instagram.com/sprout.ta/" target="_blank">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+            <footer>
+                <p class="copyright">Designed and Built By Aldo Twizerimana</p>
+                <p class="git_ratings">Follow me on my <a href="https://github.com/Aldot-02">Github</a></p>
+            </footer>
         </section>
     </main>
-    <script src="index.js"></script>
+    <script src="./Javascript/index.js"></script>
 </body>
 </html>
