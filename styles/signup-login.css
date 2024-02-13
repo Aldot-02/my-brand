@@ -173,3 +173,42 @@ footer {
     margin-bottom: 20px;
     margin-top: 8px;
 }
+
+@media only screen and (max-width: 600px) {
+    .signup-cover {
+        display: none;
+    }
+    .signup-content {
+        width: 100%;
+    }
+}
+@media only screen and (min-width: 601px) and (max-width: 768px) {
+    .signup-cover {
+        display: none;
+    }
+    .signup-content {
+        width: 100%;
+        padding: 50px 70px;
+    }
+}
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+    .signup-cover {
+        width: 40%;
+    }
+    .cover-content h1 {
+        font-size: 27px;
+        margin-left: 20px;
+    }
+    .cover-content .cover-underline {
+        width: 90%;
+        margin-left: 20px;
+    }
+    .cover-content p{
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+    
+    .signup-content {
+        width: 60%;
+    }
+}
