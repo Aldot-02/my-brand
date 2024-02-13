@@ -11,30 +11,6 @@
     <title>Login</title>
 </head>
 <body>
-    <div id="cursor"></div>
-    <div class="diamonds">
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-    </div>
     <section class="signup-container">
         <div class="signup-cover">
             <div class="cover-content">
@@ -46,41 +22,39 @@
         <div class="signup-content">
             <h2>LOGIN</h2>
             <form class="infoForm authForm">
-                <div>
+                <div class="input-field">
                     <input
-                    required
                     type="text"
                     placeholder="Email Address"
                     class="infoInput"
                     name="username"
                     />
+                    <p class="error-txt">Please enter the correct email</p>
                 </div>
-                <div>
+                <div class="input-field">
                     <input
-                    required
                     type="password"
                     class="infoInput"
                     placeholder="Password"
                     name="password"
                     />
+                    <p class="error-txt">Please enter the correct password</p>
                 </div>
                 <center>
-
                     <a href="../Admin Panel/admin-home.html"><button class="button">Login</button></a>
                 </center>
                 <span class="signup-text">
                     Don't have an Account?
                     <a href="./signup.html">Signup</a>
                 </span>
-    
             </form>
             <footer>
                 <p class="copyright">Designed and Built By Aldo Twizerimana</p>
-                <p class="git_ratings">Navigate to <a href="../Admin Panel/admin-home.html">Admin</a></p>
-                <!-- <p class="git_ratings">Follow me on my <a href="https://github.com/Aldot-02">Github</a></p> -->
+                <!-- <p class="git_ratings">Navigate to <a href="../Admin Panel/admin-home.html">Admin</a></p> -->
+                <p class="git_ratings">Follow me on my <a href="https://github.com/Aldot-02">Github</a></p>
             </footer>
         </div>
     </section>
-    <script src="index.js"></script>
+    <script src="../Javascript/signup.js"></script>
 </body>
 </html>

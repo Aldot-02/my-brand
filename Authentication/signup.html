@@ -11,30 +11,7 @@
     <title>SignUp</title>
 </head>
 <body>
-    <div id="cursor"></div>
-    <div class="diamonds">
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-        <div class="diamond"></div>
-    </div>
+    
     <section class="signup-container">
         <div class="signup-cover">
             <div class="cover-content">
@@ -47,49 +24,62 @@
             <h2>SIGN UP</h2>
             <form class="infoForm authForm">
                 <div>
-                    <input
-                        required
-                        type="text"
-                        placeholder="First Name"
-                        class="infoInput"
-                        name="firstname"
-                    />
-                    <input
-                        required
-                        type="text"
-                        placeholder="Last Name"
-                        class="infoInput"
-                        name="lastname"
-                    />
+                    <div class="input-field">
+                        <input
+                            type="text"
+                            placeholder="First Name"
+                            class="infoInput"
+                            name="firstname"
+                        />
+                        <p class="error-txt">This field can't be empty</p>
+                    </div>
+                    <div class="input-field">
+                        <input
+                            type="text"
+                            placeholder="Last Name"
+                            class="infoInput"
+                            name="lastname"
+                        />
+                        <p class="error-txt">This field can't be empty</p>
+                    </div>
                 </div>          
                 <div>
-                    <input
-                    required
-                    type="text"
-                    placeholder="Email Address"
-                    class="infoInput"
-                    name="username"
-                    />
+                    <div class="input-field">
+                        <input
+                        type="text"
+                        placeholder="Email Address"
+                        class="infoInput"
+                        name="username"
+                        />
+                        <p class="error-txt">This field can't be empty</p>
+                    </div>
                 </div>
                 <div>
-                    <input
-                    required
-                    type="password"
-                    class="infoInput"
-                    placeholder="Password"
-                    name="password"
-                    />
-                    <input
-                        required
+                    <div class="input-field">
+                        <input
                         type="password"
                         class="infoInput"
-                        name="confirmpass"
-                        placeholder="Confirm Password"
-                    />
+                        placeholder="Password"
+                        name="password"
+                        />
+                        <p class="error-txt">This field can't be empty</p>
+                    </div>
+                    <div class="input-field">
+                        <input
+                            type="password"
+                            class="infoInput"
+                            name="confirmpass"
+                            placeholder="Confirm Password"
+                        />
+                        <p class="error-txt">This field can't be empty</p>
+                    </div>
                 </div>
+                
                 <center>
-
-                    <button class="button auth-btn" type="Submit">Signup</button>
+                    <p class="confirm-pass-error">
+                        ! Passoword does not match the confirm password
+                    </p>
+                <button class="button auth-btn" type="Submit">Signup</button>
                 </center>
                 <span class="signup-text">
                     Already have an Account?
@@ -103,6 +93,8 @@
             </footer>
         </div>
     </section>
-    <script src="index.js"></script>
+    <script src="../Javascript/signup.js">
+        
+    </script>    
 </body>
 </html>
