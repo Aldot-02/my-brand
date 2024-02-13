@@ -62,7 +62,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (errors.length > 0) {
             errors[0].focus();
         } else {
-            form.submit();
+            // Store data in local storage
+            localStorage.setItem('firstName', firstName);
+            localStorage.setItem('lastName', lastName);
+            localStorage.setItem('email', email);
+            localStorage.setItem('password', password);
+            
+            // Redirect to sign-in page
+            window.location.href = 'Login.html';
         }
     });
 
