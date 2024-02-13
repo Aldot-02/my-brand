@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .contact form{
+            width: 600px;
+            text-align: center;
+
+        }
+        form .input-box {
+            display: flex;
+            justify-content: space-between;
+        }
+        .input-box .input-field {
+            width: 48.5%;
+        }
+        .field .item{
+            width: 100%;
+            padding: 18px;
+            background-color: transparent;
+            border: 2px solid #0ef;
+            outline: none;
+            border-radius: 6px;
+            color: #ededed;
+            margin: 12px 0;
+        }
+        .field .item::placeholder {
+            color: rgba(255, 255, 255, .3);
+        }
+        form .textarea-field .item {
+            resize: none;
+        }
+        form button {
+            padding: 12px 32px;
+            background-color: #0ef;
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            box-shadow: 0 0 10px #0ef;
+            font-size: 16px;
+            color: #333;
+            letter-spacing: 1px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: .5s;
+        }
+        form button:hover {
+            box-shadow: none;
+        }
+        .field .error-txt {
+            font-size: 14px;
+            color: #d93025;
+            text-align: left;
+            margin: -5px 0 10px;
+            display: none;
+        }
+        .field.error .item {
+            border: #d93025;
+        }
+        .field.error .error-txt{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="contact">
+        <h2>Contact Me</h2>
+
+        <form>
+            <div class="input-box">
+                <div class="input-field field">
+                    <input type="text" id="name" placeholder="Full Name" class="item" autocomplete="off">
+                    <div class="error-txt">This Field can't be empty</div>
+                </div>
+                <div class="input-field field">
+                    <input type="text" id="email" placeholder="Email Address" class="item" autocomplete="off">
+                    <div class="error-txt email">This Field can't be empty</div>
+                </div>
+            </div>
+            <div class="input-box">
+                <div class="input-field field">
+                    <input type="text" id="phone" placeholder="Phone Number" class="item" autocomplete="off">
+                    <div class="error-txt">This Field can't be empty</div>
+                </div>
+                <div class="input-field field">
+                    <input type="text" id="subject" placeholder="Subject" class="item" autocomplete="off">
+                    <div class="error-txt">This Field can't be empty</div>
+                </div>
+            </div>
+            <div class="textarea-field field">
+                <textarea id="message" cols="30" rows="10" class="item" autocomplete="off"></textarea>
+                <div class="error-txt">This Field can't be empty</div>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

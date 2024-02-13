@@ -522,14 +522,30 @@
                     </div>
                 </div>
                 <div class="contact">
-                    <form action="">
+                    <form class="home-contact">
                         <h3>GET IN TOUCH</h3>
-                        <input type="text" id="name" placeholder="Your name" required>
-                        <input type="email" id="email" placeholder="email address" required>
-                        <input type="tel" id="phone" placeholder="Your phone No." required>
-                        <textarea id="message" placeholder="Your message" wrap="soft" required></textarea>
-                        <button type="submit">Send</button>
-                    </form>
+                        <div class="input-field field">
+                            <input type="text" id="name" placeholder="Your name" class="item">
+                            <div class="error-txt">This Field can't be empty</div>
+                        </div>
+                        <div class="input-field field">
+                            <input type="email" id="email" placeholder="Email address" class="item">
+                            <div class="error-txt email">This Field can't be empty</div>
+                        </div>
+                        <div class="input-field field">
+                            <input type="tel" id="phone" placeholder="Your phone No." class="item">
+                            <div class="error-txt">This Field can't be empty</div>
+                        </div>
+                        <div class="input-field field">
+                            <input type="text" id="subject" placeholder="Subject" class="item">
+                            <div class="error-txt">This Field can't be empty</div>
+                        </div>
+                        <div class="textarea-field field">
+                            <textarea id="message" placeholder="Your message" wrap="soft" class="item"></textarea>
+                            <div class="error-txt">This Field can't be empty</div>
+                        </div>
+                        <button type="submit">Submit</button>
+                    </form>                    
                 </div>
             </div>
             <div class="social_res-icons">
@@ -555,6 +571,8 @@
             </footer>
         </section>
     </main>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
     <script src="./Javascript/index.js"></script>
 </body>
 </html>

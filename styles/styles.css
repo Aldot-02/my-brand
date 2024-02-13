@@ -903,8 +903,8 @@ form h3 {
 }
 
 form input, form textarea {
-    padding: .4rem;
-    margin: 20px auto;
+    padding: .2rem;
+    margin: 3px auto;
     width: 100%;
     background: transparent;
     border: none;
@@ -914,11 +914,23 @@ form input, form textarea {
     font-size: 14px;
     color: #ffffff2d;
 }
-
-form textarea {
-    padding: .1rem;
-    margin: 20px auto;
+form .input-field,.textarea-field {
+    margin: 10px auto;
+    width: 100%;
 }
+.field .error-txt {
+    color: #d93025;
+    font-size: 12px;
+    margin-top: -10px;
+    display: none;
+}
+.field.error .item {
+    border: #d93025;
+}
+.field.error .error-txt{
+    display: block;
+}
+
 
 form button {
     padding: 10px 30px;
