@@ -5,7 +5,9 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
         const email = form.elements['username'].value.trim();
         const password = form.elements['password'].value.trim();
-
+        
+        let storedFirstName = localStorage.getItem('firstName');
+        let storedLastName = localStorage.getItem('lastName');
         let storedEmail = localStorage.getItem('email');
         let storedPassword = localStorage.getItem('password');
         let errors = [];
@@ -33,7 +35,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (errors.length > 0) {
             return false;
         } else {
-            window.location.href = "../Admin Panel/admin-home.html";
+            window.location.href = "../Admin%20Panel/admin-home.html?firstName=" + encodeURIComponent(storedFirstName) + "&lastName=" + encodeURIComponent(storedLastName) + "&email=" + encodeURIComponent(storedEmail);
+
+
         }
     });
 

@@ -12,10 +12,10 @@
 </head>
 <body>
     <div class="container">
+        <div class="hamburger">
+            <div class="bar"></div>
+        </div>
         <section class="sidebar-nav">
-            <div class="hamburger">
-                <i class="fa-solid fa-bars"></i>
-            </div>
             <div class="sidebar-header menu-link">
                 <div class="admin-profile">
                     <i class="fa-regular fa-user"></i>
@@ -75,6 +75,26 @@
                     </div>
                 </a>
             </div>
+            <div class="dashboard-mobile-nav">
+                <a href="admin-home.html">
+                    <i class="fa-solid fa-house home-icon"></i>
+                </a>
+                <a href="admin-users.html">
+                    <i class="fa-solid fa-users"></i>
+                </a>
+                <a href="admin-blogs.html">
+                    <i class="fa-solid fa-blog"></i>
+                </a>
+                <a href="admin-projects.html">
+                    <i class="fa-solid fa-bars-progress"></i>
+                </a>
+                <a href="admin-media.html">
+                    <i class="fa-solid fa-photo-film"></i>
+                </a>
+                <a href="admin-settings.html">
+                    <i class="fa-solid fa-gear"></i>
+                </a>
+            </div>
         </section>
         <section class="dashboard-content">
             <div class="searchbar-top">
@@ -92,7 +112,7 @@
             <div class="dashboard-main-content">
                 <div class="users-stats-col">
                     <div class="all-users">
-                        <table>
+                        <table class="user-table" id="user-table-extended">
                             <thead>
                                 <tr>
                                     <th>First Name</th>
@@ -102,48 +122,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><i class="fa-regular fa-user"></i>John</td>
-                                    <td>Doe</td>
-                                    <td>john.doe@example.com</td>
-                                    <td><button class="delete-btn">Delete</button></td>
-                                </tr>
-                                <tr>
-                                    <td><i class="fa-regular fa-user"></i>Jane</td>
-                                    <td>Smith</td>
-                                    <td>jane.smith@example.com</td>
-                                    <td><button class="delete-btn">Delete</button></td>
-                                </tr>
-                                <tr>
-                                    <td><i class="fa-regular fa-user"></i>Alex</td>
-                                    <td>Johnson</td>
-                                    <td>alex.johnson@example.com</td>
-                                    <td><button class="delete-btn">Delete</button></td>
-                                </tr>
-                                <tr>
-                                    <td><i class="fa-regular fa-user"></i>Emily</td>
-                                    <td>Williams</td>
-                                    <td>emily.williams@example.com</td>
-                                    <td><button class="delete-btn">Delete</button></td>
-                                </tr>
-                                <tr>
-                                    <td><i class="fa-regular fa-user"></i>Aldo</td>
-                                    <td>Twizerimana</td>
-                                    <td>twizald.02@example.com</td>
-                                    <td><button class="delete-btn">Delete</button></td>
-                                </tr>
-                                <tr>
-                                    <td><i class="fa-regular fa-user"></i>Feza</td>
-                                    <td>Aline</td>
-                                    <td>feza.aline@example.com</td>
-                                    <td><button class="delete-btn">Delete</button></td>
-                                </tr>
-                                <tr>
-                                    <td><i class="fa-regular fa-user"></i>Amir</td>
-                                    <td>Sebunyange</td>
-                                    <td>feza.aline@example.com</td>
-                                    <td><button class="delete-btn">Delete</button></td>
-                                </tr>
+
                             </tbody>
                         </table>
                         <div class="user-controller-btns">
@@ -155,5 +134,7 @@
             </div>
         </section>
     </div>
+    <script src="../Javascript/admin-users.js">
+    </script>
 </body>
 </html>

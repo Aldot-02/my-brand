@@ -69,7 +69,9 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.setItem('password', password);
             
             // Redirect to sign-in page
-            window.location.href = 'Login.html';
+            // window.location.href = 'Login.html';
+                window.location.href = 'Login.html?firstName=' + encodeURIComponent(firstName) + '&lastName=' + encodeURIComponent(lastName) + '&email=' + encodeURIComponent(email);
+
         }
     });
 
