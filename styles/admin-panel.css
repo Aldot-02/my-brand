@@ -353,6 +353,7 @@ td i {
 }
 .selected .checker {
     background-color: #F45815;
+    z-index: 1000;
 }
 /* Adjust the position of the checker icon */
 .post {
@@ -365,6 +366,7 @@ td i {
     right: 5px;
     z-index: 1;
     color: transparent;
+    z-index: 1000;
 }
 
 .post_content {
@@ -400,7 +402,6 @@ td i {
 }
 .add-new h1{
     font-size: 40px;
-    /* margin-left: 50px; */
 }
 .imagePreview-view {
     width: 60%;
@@ -412,7 +413,6 @@ td i {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* background-size: cover; */
 }
 .main-content-placeholder {
     display: flex;
@@ -887,14 +887,23 @@ textarea:focus {
         flex-direction: column;
     }
     .add-new h1{
-        font-size: 40px;
-        margin-left: 50px;
+        font-size: 2rem;
+        margin-left: 0;
     }
     .main-content-placeholder {
         display: flex;
         width: 100%;
-        padding: 10px;
+        padding: 0;
         align-items: flex-end;
+        margin: 0;
+    }
+    .main-content-placeholder p{
+        padding: 0;
+        text-align: justify;
+        margin: 20px 0 0 0;
+    }
+    .main-content-placeholder img{
+        width: 100%;
     }
     .add-media-content {
         font-size: 20px;
@@ -908,12 +917,18 @@ textarea:focus {
         align-items: center;
         margin-right: 15px;
     }
+    .view .add-media-content {
+        margin-right: 0;
+    }
     .view {
-        width: 170px;
+        width: 100%;
         display: flex;
         justify-content: space-between;
-        align-self: flex-end;
+        align-self: normal;
         margin-bottom: 20px;
+    }
+    .view input {
+        width: 30%;
     }
     
     
@@ -1277,133 +1292,35 @@ textarea:focus {
     }
     
     /* BLOGS SECTION */
-    .checker {
-        border-radius: 50%;
-        padding: 10px;
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 0.4px solid #F45815;
+    .add-new h1{
+        margin-left: 0;
     }
-    .blogs-stats-col {
+    .main-content-placeholder {
+        display: flex;
         width: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-    .blogs-controller-btns {
-        width: 220px;
-        display: flex;
-        justify-content: space-between;
-        align-self: flex-end;
-        margin-bottom: 20px;
-        padding-left: 10px;
-    }
-    .user-btn {
-        background-color: #F45815;
-        color: #fff;
-        padding: 10px 15px;
-        border: none;
-        font-size: 14px;
-        border-radius: 6px;
-        cursor: pointer;
-    }
-    .delete-btn {
-        background-color: red;
-        color: #fff;
-        padding: 10px 15px;
-        border: none;
-        font-size: 14px;
-        border-radius: 6px;
-        cursor: pointer;
-    }
-    .all-blogs {
-        background-color: #0C2342;
-        border-radius: 6px;
-        color: #ffffff80;
-        width: 100%;
-        padding: 15px;
-    }
-    .blogs {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        grid-auto-rows: minmax(200px, auto);
-        gap: 10px;
-    }
-    
-    .blogs .post {
-        background: url(/images/about.avif);
-        background-size: cover;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: end;
-        border-radius: 4px;
-        overflow: hidden;
-    }
-    .user-controller-btns-blogs{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        margin-top: 20px;
-    }
-    
-    .post_content {
-        background-color: rgba(0, 0, 0, 0.8);
-        padding: 16px;
-        width: 100%;
-        box-sizing: border-box;
-        position: relative;
-    }
-    
-    .post .post_content .publication-date {
-        font-size: 12px;
-        color: rgba(250, 235, 215, 0.63);
-        margin-bottom: 5px;
-    }
-    
-    .post .post_content .headline {
-        font-size: 15px;
-        color: rgba(250, 235, 215, 0.815);
-        margin-bottom: 12px;
-    }
-    
-    .post .post_content .author {
-        font-size: 12px;
-        color: rgba(250, 235, 215, 0.63);
-        position: absolute;
-        bottom: 5px;
-        right: 5px;
+        padding: 0;
+        align-items: normal;
     }
     .add-new {
         display: flex;
         flex-direction: column;
     }
-    .add-new h1{
-        font-size: 40px;
-        margin-left: 50px;
+    .main-content-placeholder p{
+        padding: 0;
+        text-align: justify;
+        margin: 20px 0 0 0;
     }
-    .main-content-placeholder {
-        display: flex;
+    .main-content-placeholder img{
         width: 100%;
-        padding: 10px;
-        align-items: flex-end;
+    }
+    .view .add-media-content {
+        margin-left: 0;
     }
     .add-media-content {
-        font-size: 20px;
-        padding: 8px;
-        border: 1px solid #F45815;
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-right: 15px;
+        margin-right: 0;
     }
     .view {
-        width: 170px;
+        width: 420px;
         display: flex;
         justify-content: space-between;
         align-self: flex-end;
@@ -1745,137 +1662,16 @@ textarea:focus {
     }
     
     /* BLOGS SECTION */
-    .checker {
-        border-radius: 50%;
-        padding: 10px;
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 0.4px solid #F45815;
-    }
-    .blogs-stats-col {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-    .blogs-controller-btns {
-        width: 220px;
-        display: flex;
-        justify-content: space-between;
-        align-self: flex-end;
-        margin-bottom: 20px;
-        padding-left: 10px;
-    }
-    .user-btn {
-        background-color: #F45815;
-        color: #fff;
-        padding: 10px 15px;
-        border: none;
-        font-size: 14px;
-        border-radius: 6px;
-        cursor: pointer;
-    }
-    .delete-btn {
-        background-color: red;
-        color: #fff;
-        padding: 10px 15px;
-        border: none;
-        font-size: 14px;
-        border-radius: 6px;
-        cursor: pointer;
-    }
-    .all-blogs {
-        background-color: #0C2342;
-        border-radius: 6px;
-        color: #ffffff80;
-        width: 100%;
-        padding: 15px;
-    }
-    .blogs {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        grid-auto-rows: minmax(200px, auto);
-        gap: 10px;
-    }
-    
-    .blogs .post {
-        background: url(/images/about.avif);
-        background-size: cover;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: end;
-        border-radius: 4px;
-        overflow: hidden;
-    }
-    .user-controller-btns-blogs{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        margin-top: 20px;
-    }
-    
-    .post_content {
-        background-color: rgba(0, 0, 0, 0.8);
-        padding: 16px;
-        width: 100%;
-        box-sizing: border-box;
-        position: relative;
-    }
-    
-    .post .post_content .publication-date {
-        font-size: 12px;
-        color: rgba(250, 235, 215, 0.63);
-        margin-bottom: 5px;
-    }
-    
-    .post .post_content .headline {
-        font-size: 15px;
-        color: rgba(250, 235, 215, 0.815);
-        margin-bottom: 12px;
-    }
-    
-    .post .post_content .author {
-        font-size: 12px;
-        color: rgba(250, 235, 215, 0.63);
-        position: absolute;
-        bottom: 5px;
-        right: 5px;
-    }
-    .add-new {
-        display: flex;
-        flex-direction: column;
-    }
     .add-new h1{
         font-size: 40px;
-        margin-left: 50px;
+        margin-left: 0;
     }
     .main-content-placeholder {
-        display: flex;
-        width: 100%;
-        padding: 10px;
-        align-items: flex-end;
-    }
-    .add-media-content {
-        font-size: 20px;
-        padding: 8px;
-        border: 1px solid #F45815;
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-right: 15px;
+        padding: 0;
+        align-items: normal;
     }
     .view {
-        width: 170px;
-        display: flex;
-        justify-content: space-between;
-        align-self: flex-end;
-        margin-bottom: 20px;
+        width: 420px;
     }
     
     
@@ -2031,7 +1827,6 @@ textarea:focus {
         border-radius: 6px;
         color: #ffffff80;
         width: 100%;
-        /* padding: 15px; */
         height: calc(100% - 53px);
         display: flex;
     }
@@ -2055,7 +1850,6 @@ textarea:focus {
     
     /* CERTIFICATIONS SECTION */
     .media-stats-col {
-        /* height: 100%; */
         width: 100%;
         display: flex;
         flex-direction: column;

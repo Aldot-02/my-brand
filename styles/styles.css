@@ -981,6 +981,19 @@ textarea {
     justify-content: center;
     margin-bottom: 70px;
 }
+.user-btn {
+    background-color: #F45815;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    height: fit-content;
+}
+.blog-heading {
+    display: flex;
+}
 
 .blogs {
     display: grid;

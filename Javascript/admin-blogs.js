@@ -12,13 +12,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="checker">
                         <i class="fa-solid fa-check"></i>
                     </div>
-                    <a href="../Desktop/open-blog.html">
-                        <div class="post_content">
-                            <p class="publication-date">${blog.dateTime}</p>
-                            <p class="headline">${blog.title}</p>
-                            <p class="author">By: ${blog.author}</p>
-                        </div>
-                    </a>
+                    <div class="post_content">
+                        <p class="publication-date">${blog.dateTime}</p>
+                        <p class="headline">${blog.title}</p>
+                        <p class="author">By: ${blog.author}</p>
+                    </div>
                 </div>
             `;
             allBlogsContainer.insertAdjacentHTML('beforeend', blogHTML);
@@ -27,8 +25,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const checkers = document.querySelectorAll('.checker');
         checkers.forEach(checker => {
             checker.addEventListener('click', function(event) {
-                const post = event.target.closest('.post');
+                event.stopPropagation();
+                const post = checker.closest('.post');
                 post.classList.toggle('selected');
+            });
+        });
+
+        const posts = document.querySelectorAll('.post');
+        posts.forEach(post => {
+            post.addEventListener('click', function(event) {
+                const blogId = post.dataset.id;
+                localStorage.setItem('selectedBlogId', blogId);
+                window.location.href = '../Desktop/admin-open-blog.html';
             });
         });
 
