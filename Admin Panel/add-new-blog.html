@@ -89,17 +89,22 @@
             <div class="dashboard-main-content">
                 <div class="blogs-stats-col">
                     <div class="blogs-controller-btns view">
-                        <button class="delete-btn">Preview</button>
-                        <button class="user-btn">Publish</button>
+                        <input type="file" id="mediaInput" style="display: none;" accept="image/*" onchange="addMedia(event)">
+                        <div class="add-media-content">
+                            <p onclick="document.getElementById('mediaInput').click()">+</p>
+                        </div>
+                        <input type="text" id="authorInput" placeholder="Enter author's name">
+                        <button class="delete-btn" onclick="previewBlog()">Preview</button>
+                        <button class="user-btn" onclick="publishBlog()">Publish</button>
                     </div>
                     <div class="all-blogs">
-                        <div class="blogs add-new">
-                            <h1>Add A Catchy title</h1>
+                        <div class="blogs add-new" onclick="editTitle()">
+                            <h1 id="titlePlaceholder" class="editable">Click here to add a catchy title</h1>
                             <div class="main-content-placeholder">
-                                <div class="add-media-content">
-                                    <p>+</p>
+                                <div class="blog-content" onclick="editBlogBody()">
+                                    <img id="imagePreview" src="#" alt="Cover Image" style="display: none;" class="imagePreview-view">
+                                    <p id="contentPlaceholder" class="editable">Place your message here</p>
                                 </div>
-                                <p>Place your Message here</p>
                             </div>
                         </div>
                     </div>
@@ -107,5 +112,8 @@
             </div>
         </section>
     </div>
+    <script src="../Javascript/add-new-blog.js">
+        
+    </script>
 </body>
 </html>

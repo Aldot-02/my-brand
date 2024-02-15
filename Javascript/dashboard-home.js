@@ -2,17 +2,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const table = document.getElementById('user-table').getElementsByTagName('tbody')[0];
     const totalUsersElement = document.querySelector('.card-numbers p');
 
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+
     updateTotalUsersCount();
 
-    const firstName = localStorage.getItem('firstName');
-    const lastName = localStorage.getItem('lastName');
-    const email = localStorage.getItem('email');
-
-    if (firstName && lastName && email) {
+    const startIdx = Math.max(users.length - 5, 0);
+    const endIdx = users.length;
+    for (let i = startIdx; i < endIdx; i++) {
+        const { firstName, lastName, email } = users[i];
         addUserToTable(firstName, lastName, email);
-    } else {
-        const tableRow = table.parentElement.parentElement;
-        tableRow.style.display = 'none';
     }
 
     function addUserToTable(firstName, lastName, email) {
@@ -23,8 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateTotalUsersCount() {
-        const totalUsers = localStorage.length / 4;
-        
-        totalUsersElement.textContent = totalUsers;
+        totalUsersElement.textContent = users.length;
     }
 });

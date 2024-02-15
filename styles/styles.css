@@ -991,7 +991,7 @@ textarea {
 }
 
 .blogs .post {
-    background: url(/images/about.avif);
+    /* background: url(/images/about.avif); */
     background-size: cover;
     display: flex;
     flex-direction: column;

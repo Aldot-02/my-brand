@@ -62,16 +62,25 @@ document.addEventListener('DOMContentLoaded', function() {
         if (errors.length > 0) {
             errors[0].focus();
         } else {
-            // Store data in local storage
-            localStorage.setItem('firstName', firstName);
-            localStorage.setItem('lastName', lastName);
-            localStorage.setItem('email', email);
-            localStorage.setItem('password', password);
+            let users = JSON.parse(localStorage.getItem('users')) || [];
             
-            // Redirect to sign-in page
-            // window.location.href = 'Login.html';
-                window.location.href = 'Login.html?firstName=' + encodeURIComponent(firstName) + '&lastName=' + encodeURIComponent(lastName) + '&email=' + encodeURIComponent(email);
+            const existingUser = users.find(user => user.email === email);
+            if (existingUser) {
+                displayError(form.elements['username'], "The account with this email alredy exist");
+                return;
+            }
 
+            const newUser = {
+                firstName,
+                lastName,
+                email,
+                password
+            };
+            users.push(newUser);
+
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            window.location.href = `Login.html?email=${encodeURIComponent(email)}`;
         }
     });
 

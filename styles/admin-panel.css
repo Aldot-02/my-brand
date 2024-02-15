@@ -339,6 +339,7 @@ td i {
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-width: 300px;
     justify-content: end;
     border-radius: 4px;
     overflow: hidden;
@@ -349,6 +350,21 @@ td i {
     align-items: center;
     width: 100%;
     margin-top: 20px;
+}
+.selected .checker {
+    background-color: #F45815;
+}
+/* Adjust the position of the checker icon */
+.post {
+    position: relative;
+}
+
+.checker {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 1;
+    color: transparent;
 }
 
 .post_content {
@@ -384,7 +400,19 @@ td i {
 }
 .add-new h1{
     font-size: 40px;
-    margin-left: 50px;
+    /* margin-left: 50px; */
+}
+.imagePreview-view {
+    width: 60%;
+    height: 300px;
+    object-fit: cover;
+    background-size: cover;
+}
+.imagePreview-view img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* background-size: cover; */
 }
 .main-content-placeholder {
     display: flex;
@@ -393,24 +421,63 @@ td i {
     align-items: flex-end;
 }
 .add-media-content {
-    font-size: 20px;
-    padding: 8px;
+    font-size: 30px;
+    padding: 4px;
     border: 1px solid #F45815;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    color: #ffffff80;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 15px;
+    /* margin-right: 15px; */
+}
+.add-media-content p{
+    cursor: pointer;
 }
 .view {
-    width: 170px;
+    width: 450px;
     display: flex;
     justify-content: space-between;
     align-self: flex-end;
     margin-bottom: 20px;
 }
+.view input{
+    background-color: #0C2342;
+    padding: 8px;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+}
+.blog-content {
+    width: 100%;
+    padding: 20px;
+    outline: none;
+    border: none;
+    
+}
+[contenteditable]:focus {
+    outline: none;
+    border: none;
+}
+.resizable {
+    position: relative;
+    border: 1px dashed #ccc;
+    cursor: move;
+    max-width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.resizable img {
+    width: 100%;
+    height: auto;
+    display: block;
+    pointer-events: none;
+}
+
 
 
 /* PROJECTS SECTION */
