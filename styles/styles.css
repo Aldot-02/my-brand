@@ -993,6 +993,12 @@ textarea {
 }
 .blog-heading {
     display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.blog-heading h1{
+    margin-right: 20px;
+    width: 80%;
 }
 
 .blogs {
@@ -1354,17 +1360,32 @@ hr {
     margin-top: 40px;
     width: 300px;
 }
-.Like-btn,.comment-btn {
+.Like-btn {
     display: flex;
     margin-right: 50px;
     width: fit-content;
     height: fit-content;
     padding: 10px;
-    background-color: #F45815;
+    border: 1px solid #F45815;
     font-size: 17px;
     justify-content: center;
     align-items: center;
     margin-bottom: 70px;
+    cursor: pointer;
+    transition: .3s;
+}
+.comment-btn {
+    display: flex;
+    margin-right: 50px;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    border: 1px solid #F45815;
+    font-size: 17px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 70px;
+    cursor: pointer;
 }
 .Like-btn,.comment-btn i{
     margin-right: 10px;
@@ -1396,12 +1417,13 @@ hr {
 color: #ffffff80;
 margin-bottom: 20px;
 }
-.blog-comments-section .user-comment {
+.blog-comments-section .user-comment-content {
     width: 100%;
-    border: 2px solid #F45815;
+    border: 1px solid #F45815;
     height: auto;
     border-radius: 4px;
     position: relative;
+    margin-bottom: 10px;
 }
 .blog-comments-section .user-comment .comment-author{
     display: flex;
@@ -1435,7 +1457,7 @@ margin-bottom: 20px;
     padding-left: 30px;
     color: #ffffff80;
     line-height: 30px;
-    width: 70%;
+    width: 100%;
     text-align: justify;
 }
 .comment-reactions {
@@ -1890,6 +1912,7 @@ margin-bottom: 20px;
         border: 2px solid #F45815;
         width: 50%;
         margin-bottom: 0;
+        cursor: pointer;
     }
     .Like-btn {
         width: 50%;

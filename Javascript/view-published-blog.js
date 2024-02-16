@@ -1,45 +1,151 @@
 document.addEventListener('DOMContentLoaded', function() {
     let selectedBlogId = localStorage.getItem('selectedBlogId');
-    let selectedBlog = JSON.parse(localStorage.getItem('blogs')).find(blog => blog.id === selectedBlogId);    
+    let blogs = JSON.parse(localStorage.getItem('blogs')) || [];
+    let selectedBlog = blogs.find(blog => blog.id === selectedBlogId) || {};    
 
-    document.querySelector('h1').textContent = selectedBlog.title;
+    document.querySelector('h1').textContent = selectedBlog.title || "Blog Title";
 
     const authorDetailsTop = document.querySelector('.author-details-top');
-    authorDetailsTop.querySelector('.blog-publisher').textContent = `Author: ${selectedBlog.author}`;
-    authorDetailsTop.querySelector('span').textContent = `Date: ${selectedBlog.dateTime}`;
+    authorDetailsTop.querySelector('.blog-publisher').textContent = `Author: ${selectedBlog.author || "Unknown"}`;
+    authorDetailsTop.querySelector('span').textContent = `Date: ${selectedBlog.dateTime || "Unknown"}`;
 
     function formatContent(content) {
-    
         return content;
     }
 
     const blogContent = document.querySelector('.blog-content');
+    blogContent.innerHTML = formatContent(selectedBlog.content || "No content available");
 
-    blogContent.innerHTML = formatContent(selectedBlog.content);
+    function displayComments() {
+        const commentsSection = document.querySelector('.blog-comments-section');
+        const commentsNumber = commentsSection.querySelector('.Comments-number');
+        const userCommentsContainer = commentsSection.querySelector('.user-comment');
+        
+        commentsNumber.textContent = selectedBlog.comments ? selectedBlog.comments.length : 0;
+        userCommentsContainer.innerHTML = '';
 
-    paragraphs.forEach(paragraph => {
-        const p = document.createElement('p');
-        p.textContent = paragraph;
-        blogContent.appendChild(p);
+        if (selectedBlog.comments) {
+            selectedBlog.comments.forEach(comment => {
+                const commentElement = document.createElement('div');
+                commentElement.classList.add('user-comment-content');
+
+                const commentAuthor = document.createElement('div');
+                commentAuthor.classList.add('comment-author');
+
+                const commentorProfile = document.createElement('div');
+                commentorProfile.classList.add('commentor-profile');
+                commentorProfile.innerHTML = '<i class="fa-regular fa-user"></i>';
+
+                const authorDetails = document.createElement('div');
+                authorDetails.classList.add('author-details');
+
+                const commentorName = document.createElement('span');
+                commentorName.classList.add('commentor');
+                commentorName.textContent = comment.name;
+
+                const commentDate = document.createElement('span');
+                commentDate.classList.add('comments-date');
+                commentDate.textContent = comment.date;
+
+                authorDetails.appendChild(commentorName);
+                authorDetails.appendChild(commentDate);
+
+                commentAuthor.appendChild(commentorProfile);
+                commentAuthor.appendChild(authorDetails);
+
+                const commentContent = document.createElement('div');
+                commentContent.classList.add('comment-content');
+
+                const commentText = document.createElement('p');
+                commentText.textContent = comment.content;
+
+                commentContent.appendChild(commentText);
+
+                commentElement.appendChild(commentAuthor);
+                commentElement.appendChild(commentContent);
+
+                userCommentsContainer.appendChild(commentElement);
+            });
+        }
+    }
+
+    function updateCommentsNumber() {
+        const commentsNumber = document.querySelector('.comments-nbr');
+        commentsNumber.textContent = selectedBlog.comments ? selectedBlog.comments.length : 0;
+    }
+
+    const commentForm = document.querySelector('.infoForm.authForm');
+    commentForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const name = commentForm.elements['firstname'].value;
+        const email = commentForm.elements['lastname'].value;
+        const content = commentForm.elements['username'].value;
+
+        if (selectedBlog.comments && selectedBlog.comments.some(comment => comment.email === email)) {
+            alert("You have already commented on this blog with this email.");
+            return;
+        }
+
+        const newComment = {
+            name: name,
+            email: email,
+            content: content,
+            date: new Date().toLocaleDateString()
+        };
+
+        selectedBlog.comments = selectedBlog.comments || [];
+        selectedBlog.comments.push(newComment);
+
+        updateCommentsNumber();
+        displayComments();
+
+        commentForm.reset();
+
+        localStorage.setItem('blogs', JSON.stringify(blogs));
     });
 
-    const mediaImg = document.querySelector('.media-img img');
-    mediaImg.src = selectedBlog.coverImage;
-    mediaImg.alt = selectedBlog.title;
-});
+    displayComments();
+    updateCommentsNumber();
 
+    const likeButton = document.querySelector('.Like-btn');
+    const likesNumber = document.querySelector('.likes-nbr');
 
-// RELATED POSTS
-document.addEventListener('DOMContentLoaded', function() {
+    likeButton.addEventListener('click', function() {
+        if (likeButton.classList.contains('liked')) {
+            selectedBlog.likes--;
+            likeButton.classList.remove('liked');
+            likeButton.style.backgroundColor = 'transparent';
+        } else {
+            selectedBlog.likes++;
+            likeButton.classList.add('liked');
+            likeButton.style.backgroundColor = '#F45815';
+        }
+        
+        likesNumber.textContent = selectedBlog.likes;
+        localStorage.setItem('blogs', JSON.stringify(blogs));
+    });
+
+    if (selectedBlog.likes > 0) {
+        likeButton.classList.add('liked');
+        likeButton.style.backgroundColor = '#F45815';
+    }
+    likesNumber.textContent = selectedBlog.likes || 0;
+
+    const commentButton = document.querySelector('.comment-btn');
+
+    commentButton.addEventListener('click', function() {
+        const commentForm = document.querySelector('.blog-comment-form');
+        commentForm.scrollIntoView({ behavior: 'smooth' });
+    });
+
     const relatedPostsContainer = document.querySelector('.related-posts');
 
-    let blogs = JSON.parse(localStorage.getItem('blogs')) || [];
-    displayRelatedPosts(blogs);
+    const relatedBlogs = blogs.filter(blog => blog.id !== selectedBlogId);
+    displayRelatedPosts(relatedBlogs);
 
     function displayRelatedPosts(blogs) {
         blogs.forEach(blog => {
-
-            
             const relatedPost = document.createElement('div');
             relatedPost.classList.add('related-post');
 
@@ -66,11 +172,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             postDetailsTime.appendChild(dateSpan);
 
-            const timeSpan = document.createElement('span');
-            timeSpan.textContent = blog.time;
-
-            postDetailsTime.appendChild(timeSpan);
-
             relatedPostDetails.appendChild(h4);
             relatedPostDetails.appendChild(postDetailsTime);
 
@@ -88,5 +189,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-
-// THE END OF RELATED POSTS

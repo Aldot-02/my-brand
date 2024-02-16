@@ -13,7 +13,28 @@ document.addEventListener('DOMContentLoaded', function() {
         authorUpdate.textContent = selectedBlog.author;
         authorUpdate.contentEditable = true;
 
-        document.querySelector('.publication-time').textContent = selectedBlog.dateTime;
+        const publicationTime = document.querySelector('.publication-time');
+
+        // Function to format date and time
+        function formatDateTime() {
+            const currentDate = new Date();
+            const formattedDate = currentDate.toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric'
+            });
+            const formattedTime = currentDate.toLocaleTimeString('en-US', {
+                hour: 'numeric',
+                minute: 'numeric',
+                second: 'numeric',
+                hour12: false // Use 24-hour format
+            });
+            publicationTime.textContent = `${formattedDate}, ${formattedTime}`;
+        }
+
+        // Set initial publication time
+        formatDateTime();
+
         const blogContent = document.querySelector('.blog-content');
         blogContent.innerHTML = selectedBlog.content;
         blogContent.contentEditable = true;
@@ -23,10 +44,8 @@ document.addEventListener('DOMContentLoaded', function() {
             selectedBlog.author = authorUpdate.textContent;
             selectedBlog.content = blogContent.innerHTML;
 
-            const currentDate = new Date();
-            const formattedDate = `${currentDate.getDate()}-${currentDate.getMonth() + 1}-${currentDate.getFullYear()}`;
-            const formattedTime = `${currentDate.getHours()}:${currentDate.getMinutes()}`;
-            selectedBlog.dateTime = `${formattedDate}, ${formattedTime}`;
+            // Update publication time
+            formatDateTime();
 
             localStorage.setItem('blogs', JSON.stringify(blogs));
 
