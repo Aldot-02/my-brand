@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     logoutButton.addEventListener('click', function() {
         localStorage.removeItem('loggedInUser');
-        window.location.href = 'Login.html';
+        window.location.href = '../Authentication/Login.html';
     });
 
     const table = document.getElementById('user-table').getElementsByTagName('tbody')[0];
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
     if (!loggedInUser) {
-        window.location.href = 'Login.html';
+        window.location.href = '../Authentication/Login.html';
     } else {
         updateTotalUsersCount();
         updateTotalBlogsCount();

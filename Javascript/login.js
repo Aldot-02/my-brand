@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Store the logged-in user in local storage
         localStorage.setItem('loggedInUser', JSON.stringify(user));
 
         window.location.href = `../Admin%20Panel/admin-home.html`;
