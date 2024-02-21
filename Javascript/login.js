@@ -19,12 +19,22 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        window.location.href = `../Admin%20Panel/admin-home.html?firstName=${encodeURIComponent(user.firstName)}&lastName=${encodeURIComponent(user.lastName)}&email=${encodeURIComponent(user.email)}`;
+        // Store the logged-in user in local storage
+        localStorage.setItem('loggedInUser', JSON.stringify(user));
+
+        window.location.href = `../Admin%20Panel/admin-home.html`;
     });
 
     function displayError(input, message) {
         const errorElement = input.nextElementSibling;
         errorElement.textContent = message;
         errorElement.style.display = 'block';
+    }
+
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+    if (loggedInUser) {
+        // If a user is already logged in, redirect to admin dashboard
+        window.location.href = `../Admin%20Panel/admin-home.html`;
     }
 });
