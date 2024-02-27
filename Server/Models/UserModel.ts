@@ -6,8 +6,6 @@ export interface User extends Document {
     email: string;
     password: string;
     isAdmin: boolean;
-    likes: any[];
-    comments: any[];
 }
 
 const userSchema = new mongoose.Schema<User>({
@@ -30,9 +28,7 @@ const userSchema = new mongoose.Schema<User>({
     isAdmin: {
         type: Boolean,
         default: false,
-    },
-    likes: [],
-    comments: []
+    }
 },
 {
     timestamps: true

@@ -1,68 +1,107 @@
-import { Request, Response } from 'express';
-import BlogsModel, { Blog } from "../Models/BlogsModel.js";
+import BlogsModel from "../Models/BlogsModel.js"
+import UserModel, { User } from "../Models/UserModel.js";
+import mongoose from "mongoose"
 
-// CREATING A NEW BLOG
-export const createBlog = async (req: Request, res: Response): Promise<void> => {
-    // try {
-    //     if (!req.user.isAdmin) {
-    //         return res.status(403).json("Only admins can create blogs.");
-    //     }
+// CREATE A NEW BLOG
+export const createBlog = async (req: any, res: any) => {
+    const { authorId } = req.body;
 
-    //     const newBlog: Blog = new BlogsModel(req.body);
+    try {
+        const author: User | null = await UserModel.findById(authorId);
+        if (!author || !author.isAdmin) {
+            return res.status(403).json("Only admins can create blogs");
+        }
 
-    //     await newBlog.save();
-    //     res.status(200).json("Blog created successfully");
-    // } catch (error) {
-    //     res.status(500).json(error);
-    // }
+        const newBlog = new BlogsModel(req.body);
+        await newBlog.save();
+        res.status(200).json("Blog Created Successfully");
+    } catch (error) {
+        res.status(500).json(error);
+    }
 };
 
-// GETTING A BLOG
-export const getBlog = async (req: Request, res: Response): Promise<void> => {
-    // const id: string = req.params.id;
+// GET A BLOG
+export const getBlog = async(req: any, res: any)=> {
+    const id = req.params.id
 
-    // try {
-    //     const blog: Blog | null = await BlogsModel.findById(id);
-    //     res.status(200).json(blog);
-    // } catch (error) {
-    //     res.status(500).json(error);
-    // }
-};
+    try {
+        const blog = await BlogsModel.findById(id)
+
+        res.status(200).json(blog)
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
+
 
 // UPDATE A BLOG
-export const updateBlog = async (req: Request, res: Response): Promise<void> => {
-    // const blogId: string = req.params.id;
-    // const { userId }: { userId: string } = req.body;
+export const updateBlog = async (req: any, res: any) => {
+    const blogId = req.params.id;
+    const { authorId } = req.body;
 
-    // try {
-    //     const blog: Blog | null = await BlogsModel.findById(blogId);
+    try {
+        const blog = await BlogsModel.findById(blogId);
+        if (!blog) {
+            return res.status(404).json("Blog not found");
+        }
 
-    //     if (!req.user.isAdmin && blog?.userId !== userId) {
-    //         return res.status(403).json("You do not have permission to update this blog.");
-    //     }
+        const author: User | null = await UserModel.findById(authorId);
+        if (!author || (!author.isAdmin && blog.authorId !== authorId)) {
+            return res.status(403).json("Permission Denied");
+        }
 
-    //     await BlogsModel.updateOne({ _id: blogId }, { $set: req.body });
-    //     res.status(200).json("Blog updated successfully");
-    // } catch (error) {
-    //     res.status(500).json(error);
-    // }
+        await blog.updateOne({ $set: req.body });
+        res.status(200).json("Blog Updated Successfully");
+    } catch (error) {
+        res.status(500).json(error);
+    }
 };
 
-// DELETING A BLOG
-export const deleteBlog = async (req: Request, res: Response): Promise<void> => {
-    // const blogId: string = req.params.id;
-    // const { userId }: { userId: string } = req.body;
 
-    // try {
-    //     const blog: Blog | null = await BlogsModel.findById(blogId);
+// DELETE A BLOG
+export const deleteBlog = async (req: any, res: any) => {
+    const blogId = req.params.id;
+    const { authorId } = req.body;
 
-    //     if (!req.user.isAdmin && blog?.userId !== userId) {
-    //         return res.status(403).json("You do not have permission to delete this blog.");
-    //     }
+    try {
+        const blog = await BlogsModel.findById(blogId);
+        if (!blog) {
+            return res.status(404).json("Blog not found");
+        }
 
-    //     await BlogsModel.deleteOne({ _id: blogId });
-    //     res.status(200).json("Blog deleted successfully");
-    // } catch (error) {
-    //     res.status(500).json(error);
-    // }
+        const author: User | null = await UserModel.findById(authorId);
+        if (!author || (!author.isAdmin && blog.authorId !== authorId)) {
+            return res.status(403).json("Permission Denied");
+        }
+
+        await blog.deleteOne();
+        res.status(200).json("Blog deleted Successfully");
+    } catch (error) {
+        res.status(500).json(error);
+    }
 };
+
+
+// LIKING AND DISLIKING A BLOG
+export const likeBlog = async(req: any, res: any) => {
+    const id = req.params.id
+    const { authorId } = req.body
+
+    try {
+        const blog = await BlogsModel.findById(id)
+
+        if (blog) {
+            if (!blog.likes.includes(authorId)) {
+                await blog.updateOne({ $push: { likes: authorId } })
+                res.status(200).json("You liked this Post")
+            } else {
+                await blog.updateOne({ $pull: { likes: authorId } })
+                res.status(200).json("You unliked this Post");
+            }
+        } else {
+            res.status(404).json("Blog not found")
+        }
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
