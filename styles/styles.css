@@ -1400,6 +1400,11 @@ hr {
     border: 2px solid #F45815;
     width: 100%;
     margin-bottom: 50px;
+    display: flex;
+}
+.blog-comment-form .authForm{
+    margin-left: 50px;
+    margin-top: 60px;
 }
 
 .comments-section-header {
@@ -1410,7 +1415,6 @@ hr {
     font-size: 19px;
     background-color: #F45815;
     color: #ffffff80;
-    margin-bottom: 15px;
 }
 
 .blog-comments-section h3{

@@ -4,16 +4,25 @@ import bcrypt from 'bcrypt';
 
 // Registering a new user
 export const registerUser = async (req: Request, res: Response): Promise<void> => {
-    const { firstname, lastname, email, password }: User = req.body;
+    const { firstname, lastname, email, password, isAdmin }: User = req.body;
 
     try {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
-        
-        const newUser = new UserModel({ firstname, lastname, email, password: hashedPassword });
 
+        // Create a new user instance with the provided data
+        const newUser = new UserModel({
+            firstname,
+            lastname,
+            email,
+            password: hashedPassword,
+            isAdmin: isAdmin || false // Use provided isAdmin value or default to false
+        });
+
+        // Save the new user to the database
         await newUser.save();
-        res.status(200).json(newUser);
+
+        res.status(200).json(newUser); // Return the newly created user
     } catch (error: any) {
         res.status(500).json({ message: error.message });
     }

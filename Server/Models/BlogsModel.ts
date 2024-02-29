@@ -1,7 +1,7 @@
-import mongoose, { Schema, Document, Model } from "mongoose";
+import mongoose, { Document, Schema, Model } from "mongoose";
 
 export interface Blog extends Document {
-    authorId: string;
+    author: string;
     title: string;
     content: string;
     coverImage: string;
@@ -9,10 +9,10 @@ export interface Blog extends Document {
     comments: any[];
 }
 
-const blogSchema: Schema<Blog> = new mongoose.Schema({
-    authorId: {
+const BlogsSchema: Schema = new mongoose.Schema({
+    author: {
         type: String,
-        required: true,
+        required: true
     },
     title: {
         type: String,
@@ -33,6 +33,5 @@ const blogSchema: Schema<Blog> = new mongoose.Schema({
     timestamps: true
 });
 
-const BlogsModel: Model<Blog> = mongoose.model<Blog>("Blogs", blogSchema);
-
+const BlogsModel: Model<Blog> = mongoose.model<Blog>("BlogPosts", BlogsSchema);
 export default BlogsModel;

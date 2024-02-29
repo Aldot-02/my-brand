@@ -1,49 +1,72 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const logoutButton = document.querySelector('.logout');
-
-    logoutButton.addEventListener('click', function() {
-        localStorage.removeItem('loggedInUser');
-        window.location.href = '../Authentication/Login.html';
-    });
-
+    // const logoutButton = document.querySelector('.logout');
     const table = document.getElementById('user-table').getElementsByTagName('tbody')[0];
     const totalUsersElement = document.querySelector('.card-numbers p');
-    const totalBlogsElement = document.querySelector('.blogs-nbr');
+    const totalBlogsUsers = document.querySelector('.card-numbers .blogs-nbr');
+    
+    // logoutButton.addEventListener('click', async function() {
+    //     try {
+    //         const response = await fetch('/auth/logout', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             }
+    //         });
 
-    let users = JSON.parse(localStorage.getItem('users')) || [];
-    let blogs = JSON.parse(localStorage.getItem('blogs')) || [];
-    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    //         if (!response.ok) {
+    //             throw new Error('Logout failed. Please try again.');
+    //         }
 
-    if (!loggedInUser) {
-        window.location.href = '../Authentication/Login.html';
-    } else {
-        updateTotalUsersCount();
-        updateTotalBlogsCount();
+    //         window.location.href = '../Authentication/Login.html';
+    //     } catch (error) {
+    //         console.error('Logout failed:', error.message);
+    //     }
+    // });
 
-        const startIdx = Math.max(users.length - 5, 0);
-        const endIdx = users.length;
-        for (let i = startIdx; i < endIdx; i++) {
-            const { firstName, lastName, email } = users[i];
-            addUserToTable(firstName, lastName, email);
+    async function fetchUsers() {
+        try {
+            const response = await fetch('http://localhost:3000/user');
+            const users = await response.json();
+
+            updateTotalUsersCount(users.length);
+
+            const startIdx = Math.max(users.length - 4, 0);
+            const endIdx = users.length;
+            for (let i = startIdx; i < endIdx; i++) {
+                const { firstname, lastname, email } = users[i];
+                addUserToTable(firstname, lastname, email);
+            }
+        } catch (error) {
+            console.error('Failed to fetch users:', error.message);
         }
-
-        window.history.pushState(null, document.title, window.location.href);
-        window.addEventListener('popstate', function(event) {
-            window.history.pushState(null, document.title, window.location.href);
-        });
     }
 
-    function addUserToTable(firstName, lastName, email) {
+    fetchUsers();
+
+    async function fetchBlogs() {
+        try {
+            const response = await fetch('http://localhost:3000/blog/all');
+            const blogs = await response.json();
+
+            updateTotalBlogsCount(blogs.length);
+        } catch (error) {
+            console.error('Failed to fetch blogs:', error.message);
+        }
+    }
+
+    fetchBlogs();
+
+    function addUserToTable(firstname, lastname, email) {
         const newRow = table.insertRow();
-        newRow.innerHTML = `<td><i class="fa-regular fa-user"></i>${firstName}</td>
-                            <td>${lastName}</td>
+        newRow.innerHTML = `<td><i class="fa-regular fa-user"></i>${firstname}</td>
+                            <td>${lastname}</td>
                             <td>${email}</td>`;
     }
 
-    function updateTotalUsersCount() {
-        totalUsersElement.textContent = users.length;
+    function updateTotalUsersCount(count) {
+        totalUsersElement.textContent = count;
     }
-    function updateTotalBlogsCount() {
-        totalBlogsElement.textContent = blogs.length;
+    function updateTotalBlogsCount(count) {
+        totalBlogsUsers.textContent = count;
     }
 });

@@ -111,6 +111,29 @@ height: 90px;
 .infoForm div > div {
 flex: 1;
 }
+.infoForm .admin-checkbox{
+    height: 30px;
+    margin-top: -30px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+  
+.infoForm .admin-checkbox input[type="checkbox"] {
+    border: 0.5px solid #F45815;
+    outline: none;
+    background: transparent;
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+}
+  
+.admin-checkbox label {
+    font-size: 14px;
+    color: #F45815;
+}
+  
   
 .button {
 cursor: pointer;
