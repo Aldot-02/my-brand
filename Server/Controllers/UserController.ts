@@ -22,7 +22,7 @@ export const getUser = async (req: Request, res: Response): Promise<void> => {
 // Getting all users
 export const getAllUsers = async (req: Request, res: Response) : Promise<void> => {
     try {
-        const users: User[] = await UserModel.find()
+        const users: User[] = await UserModel.find();
         res.status(200).send(users);
     } catch (error) {
         res.status(500).json(error);
@@ -56,8 +56,16 @@ export const deleteUser = async (req: Request, res: Response): Promise<void> => 
     const id: string = req.params.id;
 
     try {
+
+        const user: User | null = await UserModel.findById(id).select('-password').lean<User>().exec();
+
+        if(user) {
             await UserModel.findByIdAndDelete(id);
             res.status(200).json("Account deleted successfully");
+        }
+        else {
+            res.status(200).json("User Account doesn't exist");
+        }
     } catch (error) {
         res.status(500).json(error);
     }

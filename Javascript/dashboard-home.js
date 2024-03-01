@@ -1,27 +1,27 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // const logoutButton = document.querySelector('.logout');
     const table = document.getElementById('user-table').getElementsByTagName('tbody')[0];
     const totalUsersElement = document.querySelector('.card-numbers p');
     const totalBlogsUsers = document.querySelector('.card-numbers .blogs-nbr');
     
-    // logoutButton.addEventListener('click', async function() {
-    //     try {
-    //         const response = await fetch('/auth/logout', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             }
-    //         });
+    
+    async function fetchUserInfo() {
+        try {
+            const response = await fetch('http://localhost:3000/auth/profile', {
+                method: 'GET',
+                credentials: 'include'
+            });
 
-    //         if (!response.ok) {
-    //             throw new Error('Logout failed. Please try again.');
-    //         }
+            if (!response.ok) {
+                throw new Error('Failed to fetch user information');
+            }
 
-    //         window.location.href = '../Authentication/Login.html';
-    //     } catch (error) {
-    //         console.error('Logout failed:', error.message);
-    //     }
-    // });
+            const userInfo = await response.json();
+            console.log(userInfo);
+        } catch (error) {
+            console.error('Failed to fetch user information:', error.message);
+        }
+    }
+    fetchUserInfo()
 
     async function fetchUsers() {
         try {
@@ -69,4 +69,24 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateTotalBlogsCount(count) {
         totalBlogsUsers.textContent = count;
     }
+
+    const logoutButton = document.querySelector('.logout');
+    
+    logoutButton.addEventListener('click', async function(event) {
+        event.preventDefault();
+        try {
+            const response = await fetch('http://localhost:3000/auth/logout', {
+                method: 'POST',
+                credentials: 'include'
+            });
+            if (response.ok) {
+                document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                window.location.href = '../Authentication/Login.html';
+            } else {
+                throw new Error('Failed to logout. Please try again.');
+            }
+        } catch (error) {
+            console.error('Logout failed:', error.message);
+        }
+    });
 });

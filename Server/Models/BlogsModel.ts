@@ -27,7 +27,7 @@ const BlogsSchema: Schema = new mongoose.Schema({
         required: true
     },
     likes: [],
-    comments: []
+    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }]
 },
 {
     timestamps: true
