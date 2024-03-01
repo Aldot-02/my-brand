@@ -4,24 +4,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const totalBlogsUsers = document.querySelector('.card-numbers .blogs-nbr');
     
     
-    async function fetchUserInfo() {
-        try {
-            const response = await fetch('http://localhost:3000/auth/profile', {
-                method: 'GET',
-                credentials: 'include'
-            });
+    // async function fetchUserInfo() {
+    //     try {
+    //         const response = await fetch('http://localhost:3000/auth/profile', {
+    //             method: 'GET',
+    //             credentials: 'include'
+    //         });
 
-            if (!response.ok) {
-                throw new Error('Failed to fetch user information');
-            }
+    //         if (!response.ok) {
+    //             throw new Error('Failed to fetch user information');
+    //         }
 
-            const userInfo = await response.json();
-            console.log(userInfo);
-        } catch (error) {
-            console.error('Failed to fetch user information:', error.message);
-        }
-    }
-    fetchUserInfo()
+    //         const userInfo = await response.json();
+    //         console.log(userInfo);
+    //     } catch (error) {
+    //         console.error('Failed to fetch user information:', error.message);
+    //     }
+    // }
+    // fetchUserInfo()
 
     async function fetchUsers() {
         try {

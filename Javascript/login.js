@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (errors.length === 0) {
             try {
                 const response = await fetch('http://localhost:3000/auth/login', {
+                    credentials: "include",
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -42,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         email: email,
                         password: password
                     }),
-                    credentials: 'include'
+                    
                 });
 
                 if (!response.ok) {

@@ -59,17 +59,8 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
 
 
 export const getProfileInfo = async (req: Request, res: Response): Promise<void> => {
-    const {token, secret} = req.cookies;
 
-    if (!token || !secret) {
-        res.status(401).json({ message: "Unauthorized" });
-        return;
-    }
-
-    jwt.verify(token, secret, {}, (err: any, info) => {
-        if(err) throw err;
-        res.json(info)
-    });
+    res.json(req.cookies);
 };
 
 
