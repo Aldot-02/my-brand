@@ -17,7 +17,7 @@ const app: Application = express();
 // MIDDLEWARES
 app.use(cors({
     credentials: true,
-    origin: ['http://127.0.0.1:5500', 'https://aldot.netlify.app/']
+    origin: ['http://127.0.0.1:5500', 'https://aldot.netlify.app']
 }));
 app.use(bodyParser.json({ limit: '30mb'}));
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
