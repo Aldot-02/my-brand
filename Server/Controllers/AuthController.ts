@@ -7,7 +7,12 @@ export const registerUser = async (req: Request, res: Response): Promise<void> =
     const { firstname, lastname, email, password, isAdmin }: User = req.body;
 
     try {
+        const existingUser = await UserModel.findOne({ email });
 
+        if (existingUser) {
+            res.status(409).json({ message: 'Account already exists with this email.' });
+            return;
+        }
 
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
@@ -35,22 +40,30 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
     try {
         const user = await UserModel.findOne({ email });
 
+        // if (user) {
+        //     const validity = await bcrypt.compare(password, user.password);
+
+        //     if (validity) {
+        //         const secret = "PORTFOLIO"
+        //         jwt.sign({email, id:user._id, isAdmin: user.isAdmin}, secret, {}, (err: any, token: any) => {
+        //             if(err) throw err
+        //             res.cookie("token", token, { sameSite: 'none' }).json({ token, isAdmin: user.isAdmin });
+        //         })
+        //     }
+        //     else {
+        //         res.status(400).json("Wrong Password");
+        //     }
+
+        // } else {
+        //     res.status(404).json("User not found");
+        // }
+
         if (user) {
             const validity = await bcrypt.compare(password, user.password);
-
-            if (validity) {
-                const secret = "PORTFOLIO"
-                jwt.sign({email, id:user._id, isAdmin: user.isAdmin}, secret, {}, (err: any, token: any) => {
-                    if(err) throw err
-                    res.cookie("token", token, { sameSite: 'none' }).json({ token, isAdmin: user.isAdmin });
-                })
-            }
-            else {
-                res.status(400).json("Wrong Password");
-            }
-
-        } else {
-            res.status(404).json("User not found");
+            validity ? res.status(200).json(user) : res.status(400).json({message: "Wrong Password"});
+        }
+        else {
+            res.status(404).json({message: "User not found"});
         }
     } catch (error: any) {
         res.status(500).json({ message: error.message });

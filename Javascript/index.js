@@ -12,43 +12,6 @@ window.onload = function(){
 
 }
 
-// // BLOGS DISPLAY
-// document.addEventListener('DOMContentLoaded', function() {
-//     let blogs = JSON.parse(localStorage.getItem('blogs')) || [];
-
-//     displayBlogs(blogs);
-
-//     function displayBlogs(blogs) {
-//         const blogsContainer = document.querySelector('.blogs');
-
-//         blogs.forEach(blog => {
-//             const blogHTML = `
-//                 <div class="post" data-id="${blog.id}" style="background-image: url(${blog.coverImage});">
-//                     <a href="../Desktop/open-blog.html">
-//                         <div class="post_content">
-//                             <p class="publication-date">${blog.dateTime}</p>
-//                             <p class="headline">${blog.title}</p>
-//                             <p class="author">By: ${blog.author}</p>
-//                         </div>
-//                     </a>
-//                 </div>
-//             `;
-//             blogsContainer.insertAdjacentHTML('beforeend', blogHTML);
-//         });
-//     }
-
-//     const blogPosts = document.querySelectorAll('.post');
-
-//     blogPosts.forEach(post => {
-//         post.addEventListener('click', function() {
-//             const postId = post.getAttribute('data-id');
-//             localStorage.setItem('selectedBlogId', postId);
-//             window.location.href = './Desktop/open-blog.html';
-//         });
-//     });
-// });
-
-// // THE END OF BLOGS DISPLAY
 
 document.addEventListener('DOMContentLoaded', function() {
     fetch('http://localhost:3000/blog/all')
