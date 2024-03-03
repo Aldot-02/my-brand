@@ -13,6 +13,51 @@ window.onload = function(){
 }
 
 
+// CHECKING IF USER IS LOGGED IN OR OUT
+document.addEventListener('DOMContentLoaded', async function() {
+    const loginLogoutButton = document.getElementById('login-logout-button');
+
+    const checkAuthentication = async () => {
+        try {
+            const response = await fetch('http://localhost:3000/auth/authenticated', {
+                credentials: "include",
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
+            if (response.ok) {
+                loginLogoutButton.textContent = 'Logout';
+            } else {
+                loginLogoutButton.textContent = 'Login';
+            }
+        } catch (error) {
+            console.error('Error checking authentication:', error.message);
+        }
+    };
+
+    await checkAuthentication();
+
+    loginLogoutButton.addEventListener('click', async () => {
+        if (loginLogoutButton.textContent === 'Login') {
+            window.location.href = '../Authentication/signup.html';
+        } else {
+            try {
+                const response = await fetch('http://localhost:3000/auth/logout', {
+                    credentials: "include",
+                });
+                if (response.ok) {
+                    loginLogoutButton.textContent = 'Login';
+                } else {
+                    console.error('Logout failed');
+                }
+            } catch (error) {
+                console.error('Error logging out:', error.message);
+            }
+        }
+    });
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     fetch('http://localhost:3000/blog/all')
         .then(response => {
