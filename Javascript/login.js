@@ -52,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 const userData = await response.json();
                 
-                // Check if user is admin
                 if (userData.isAdmin) {
                     console.log(userData)
                     window.location.href = `../Admin%20Panel/admin-home.html`;

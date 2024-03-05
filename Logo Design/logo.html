@@ -1,26 +1,27 @@
+<!-- THIS FILE IS FOR DESIGNING THE LOGO OF MY BRAND USING CANVAS. -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Diamond Animation</title>
 <style>
-    /* Reset margin and padding for body and html */
     body, html {
         background-color: #0A192F;
         margin: 0;
         padding: 0;
-        height: 100%; /* Make sure html and body are full height */
-        overflow: hidden; /* Prevent scrollbars if the canvas is bigger than the screen */
+        height: 100%;
+        overflow: hidden;
     }
   
-    /* Style the canvas */
     canvas {
-      display: block; /* Remove the default inline display */
-      position: absolute; /* Position absolutely will be relative to the nearest positioned ancestor or the initial containing block (normally the viewport) */
-      top: 50%; /* Position the top edge of the canvas in the center of the viewport */
-      left: 50%; /* Position the left edge of the canvas in the center of the viewport */
-      transform: translate(-50%, -50%); /* Offset the canvas by half its width and height to center it */
-      border: none; /* Remove the border */
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: none;
     }
   </style>
   </head>
@@ -32,13 +33,11 @@
 
 <script>
 
-// Set up the canvas and context
 var canvas = document.getElementById('myCanvas');
 var ctx = canvas.getContext('2d');
-ctx.strokeStyle = '#F45815'; // Diamond border color
+ctx.strokeStyle = '#F45815';
 ctx.lineWidth = 4;
 
-// Define the diamonds parameters
 var diamonds = [
   { size: 120, progress: 0 },
   { size: 100, progress: 0 },
@@ -46,14 +45,13 @@ var diamonds = [
   { size: 60, progress: 0 }
 ];
 
-var drawSpeed = 0.3; // Speed of the line being drawn
+var drawSpeed = 0.3;
 
-// Function to draw the letter A in the center
 function drawLetterA() {
-  ctx.font = '30px Arial'; // Change the font size and type if needed
-  ctx.fillStyle = '#F45815'; // Change the color of the letter if needed
+  ctx.font = '30px Arial';
+  ctx.fillStyle = '#F45815';
   ctx.textAlign = 'center';
-  ctx.fillText('A', canvas.width / 2, canvas.height / 2 + 6); // Adjust vertical position as needed
+  ctx.fillText('A', canvas.width / 2, canvas.height / 2 + 6);
 }
 
 // Function to draw a diamond (rotated square)
@@ -97,11 +95,10 @@ function drawDiamond(x, y, size, progress) {
     if (progress >= quarterSize * 3) {
         var leftProgress = progress - quarterSize * 3;
         ctx.moveTo(-halfSize, 0);
-        // Ensure that the line completes the left side when progress reaches the full size
         if (progress < size) {
             ctx.lineTo(-halfSize + leftProgress, -leftProgress);
         } else {
-            ctx.lineTo(0, -halfSize); // This will complete the diamond when progress equals size
+            ctx.lineTo(0, -halfSize);
         }
     }
 
@@ -110,12 +107,9 @@ function drawDiamond(x, y, size, progress) {
   ctx.restore();
 }
 
-// Modify the animate function to include drawing the letter A
 function animate() {
-  // Clear the canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  // Variable to track whether all diamonds are fully drawn
   var allDiamondsComplete = true;
 
   // Draw each diamond with its current progress

@@ -13,50 +13,73 @@ window.onload = function(){
 }
 
 
-// CHECKING IF USER IS LOGGED IN OR OUT
-document.addEventListener('DOMContentLoaded', async function() {
+// LOGIN AND LOGOUT FUNCTIONALITY ON THE FRONT END
+document.addEventListener('DOMContentLoaded', function(){
     const loginLogoutButton = document.getElementById('login-logout-button');
-
+    
+    
     const checkAuthentication = async () => {
+        let response;
         try {
-            const response = await fetch('http://localhost:3000/auth/authenticated', {
-                credentials: "include",
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+            response = await fetch('http://localhost:3000/auth/authenticated', {
+                credentials: "include"
             });
-            if (response.ok) {
-                loginLogoutButton.textContent = 'Logout';
-            } else {
+            if (!response.ok) {
                 loginLogoutButton.textContent = 'Login';
+                console.log("You are not logged in")
+            }
+            else {
+                console.log("You are logged in")
+                loginLogoutButton.textContent = 'Logout';
+                return true;
             }
         } catch (error) {
-            console.error('Error checking authentication:', error.message);
+            console.error('Error:', error);
+            window.location.href = `./index.html`
         }
     };
-
-    await checkAuthentication();
-
-    loginLogoutButton.addEventListener('click', async () => {
-        if (loginLogoutButton.textContent === 'Login') {
-            window.location.href = '../Authentication/signup.html';
-        } else {
-            try {
-                const response = await fetch('http://localhost:3000/auth/logout', {
-                    credentials: "include",
-                });
-                if (response.ok) {
-                    loginLogoutButton.textContent = 'Login';
-                } else {
-                    console.error('Logout failed');
+    
+    const Logout = async () => {
+        try {
+            const response = await fetch('http://localhost:3000/auth/logout', {
+                credentials: "include",
+                method: 'POST'
+            });
+            if (!response.ok) {
+                console.log("logout failed")
+                throw new Error('Logout Failed');
+            }
+            else {
+                console.log("logout successful")
+                loginLogoutButton.textContent === 'Login'
+                return true;
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            return false;
+        }
+    };
+       
+    checkAuthentication().then(isAuthenticated => {
+        if (isAuthenticated) {
+            loginLogoutButton.onclick = function() {
+                Logout();
+                window.location.href = `./index.html`
+                return false;
+            }
+        }else {
+            loginLogoutButton.onclick = function() {
+                if(loginLogoutButton.textContent === 'Login') {
+                    console.log("told to go to login page")
+                    window.location.href = './Authentication/Login.html';
                 }
-            } catch (error) {
-                console.error('Error logging out:', error.message);
             }
         }
     });
+
+
 });
+// THE END OF LOGIN LOGOUT FUNCTIONALITY
 
 document.addEventListener('DOMContentLoaded', function() {
     fetch('http://localhost:3000/blog/all')

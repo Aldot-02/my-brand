@@ -1,3 +1,2 @@
-node_modules
-/Server/dist/
-/server/.env
+./Server/node_modules
+./Server/.env

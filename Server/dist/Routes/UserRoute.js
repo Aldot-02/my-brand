@@ -1,14 +1,11 @@
-import express, { Router } from 'express';
+import express from 'express';
 import { deleteUser, getAllUsers, getUser, updateUser } from '../Controllers/UserController.js';
-
-const router: Router = express.Router();
-
+const router = express.Router();
 /**
  * @openapi
  * tags:
  *   name: Users
  */
-
 /**
  * @openapi
  * components:
@@ -39,7 +36,6 @@ const router: Router = express.Router();
  *         type: boolean
  *         description: Indicates whether the user is an administrator.
  */
-
 /**
  * @openapi
  * /user/{id}:
@@ -62,7 +58,6 @@ const router: Router = express.Router();
  *         description: Internal server error
  */
 router.get('/:id', getUser);
-
 /**
  * @openapi
  * /user/{id}:
@@ -99,7 +94,6 @@ router.get('/:id', getUser);
  *         description: Internal server error
  */
 router.patch('/:id', updateUser);
-
 /**
  * @openapi
  * /user/{id}:
@@ -122,7 +116,6 @@ router.patch('/:id', updateUser);
  *         description: Internal server error
  */
 router.delete('/:id', deleteUser);
-
 /**
  * @openapi
  * /user/:
@@ -136,5 +129,5 @@ router.delete('/:id', deleteUser);
  *         description: Internal server error
  */
 router.get('/', getAllUsers);
-
 export default router;
+//# sourceMappingURL=UserRoute.js.map

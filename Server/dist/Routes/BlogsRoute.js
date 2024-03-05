@@ -1,14 +1,11 @@
-import express, { Router } from 'express';
+import express from 'express';
 import { commentBlog, createBlog, deleteBlog, getAllBlogs, getAllComments, getBlog, likeBlog, updateBlog } from '../Controllers/BlogsController.js';
-
-const router: Router = express.Router();
-
+const router = express.Router();
 /**
  * @openapi
  * tags:
  *   name: Blogs
  */
-
 /**
  * @openapi
  * components:
@@ -78,7 +75,6 @@ const router: Router = express.Router();
  *         likes: ["60e97c9fcf5c026b848860d3"]
  *         comments: ["60e97c9fcf5c026b848860d3"]
  */
-
 /**
  * @openapi
  * /blog/:
@@ -98,7 +94,6 @@ const router: Router = express.Router();
  *         description: Internal server error
  */
 router.post('/', createBlog);
-
 /**
  * @openapi
  * /blog/all:
@@ -112,7 +107,6 @@ router.post('/', createBlog);
  *         description: Internal server error
  */
 router.get('/all', getAllBlogs);
-
 /**
  * @openapi
  * /blog/{id}:
@@ -134,7 +128,6 @@ router.get('/all', getAllBlogs);
  *         description: Internal server error
  */
 router.get('/:id', getBlog);
-
 /**
  * @openapi
  * /blog/{id}:
@@ -162,7 +155,6 @@ router.get('/:id', getBlog);
  *         description: Internal server error
  */
 router.patch('/:id', updateBlog);
-
 /**
  * @openapi
  * /blog/{id}:
@@ -184,7 +176,6 @@ router.patch('/:id', updateBlog);
  *         description: Internal server error
  */
 router.delete('/:id', deleteBlog);
-
 /**
  * @openapi
  * /blog/{id}/like:
@@ -217,7 +208,6 @@ router.delete('/:id', deleteBlog);
  *         description: Internal server error
  */
 router.patch('/:id/like', likeBlog);
-
 /**
  * @openapi
  * /blog/{id}/comment:
@@ -245,7 +235,6 @@ router.patch('/:id/like', likeBlog);
  *         description: Internal server error
  */
 router.post('/:id/comment', commentBlog);
-
 /**
  * @openapi
  * /blog/{id}/comments:
@@ -267,5 +256,5 @@ router.post('/:id/comment', commentBlog);
  *         description: Internal server error
  */
 router.get('/:id/comments', getAllComments);
-
 export default router;
+//# sourceMappingURL=BlogsRoute.js.map

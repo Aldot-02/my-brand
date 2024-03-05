@@ -3,13 +3,9 @@
  * tags:
  *   name: Authentication
  */
-
-
-import express, { Router } from 'express';
+import express from 'express';
 import { AuthenticatedUser, Logout, Refresh, loginUser, registerUser } from '../Controllers/AuthController.js';
-
-const router: Router = express.Router();
-
+const router = express.Router();
 /**
  * @openapi
  * /auth/register:
@@ -48,7 +44,6 @@ const router: Router = express.Router();
  *         description: Internal server error
  */
 router.post('/register', registerUser);
-
 /**
  * @openapi
  * /auth/login:
@@ -97,7 +92,6 @@ router.post('/login', loginUser);
  *         description: Internal server error
  */
 router.get('/authenticated', AuthenticatedUser);
-
 /**
  * @openapi
  * /auth/refresh:
@@ -115,7 +109,6 @@ router.get('/authenticated', AuthenticatedUser);
  *         description: Internal server error
  */
 router.post('/refresh', Refresh);
-
 /**
  * @openapi
  * /auth/logout:
@@ -133,5 +126,5 @@ router.post('/refresh', Refresh);
  *         description: Internal server error
  */
 router.post('/logout', Logout);
-
 export default router;
+//# sourceMappingURL=AuthRoute.js.map

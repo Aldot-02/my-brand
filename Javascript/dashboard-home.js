@@ -3,7 +3,50 @@ document.addEventListener('DOMContentLoaded', function() {
     const totalUsersElement = document.querySelector('.card-numbers p');
     const totalBlogsUsers = document.querySelector('.card-numbers .blogs-nbr');
 
+    const checkAuthentication = async () => {
+        let response;
+        try {
+            response = await fetch('http://localhost:3000/auth/authenticated', {
+                credentials: "include"
+            });
+            if (!response.ok) {
+                throw new Error('Response is not OK');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            window.location.href = '../Authentication/Login.html';
+            return false;
+        }
+        
+        try {
+            const userData = await response.json();
+            console.log(userData);
+            const adminName = document.querySelector('.admin-details-top .admin-name');
+            if (adminName) {
+                adminName.textContent = `${userData.firstname} ${userData.lastname}`;
+            } else {
+                console.error('Admin name element not found');
+            }
+            
+            return true;
 
+        } catch (error) {
+            console.error('Error parsing JSON:', error);
+            return false;
+        }
+    };
+
+    
+    checkAuthentication().then(isAuthenticated => {
+        if (isAuthenticated) {
+            fetchUsers();
+            fetchBlogs();
+            addLogoutEvent();
+        }
+    });
+
+    
+    
     async function fetchUsers() {
         try {
             const response = await fetch('http://localhost:3000/user');
@@ -22,7 +65,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    fetchUsers();
 
     async function fetchBlogs() {
         try {
@@ -35,7 +77,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    fetchBlogs();
 
     function addUserToTable(firstname, lastname, email) {
         const newRow = table.insertRow();
@@ -51,23 +92,32 @@ document.addEventListener('DOMContentLoaded', function() {
         totalBlogsUsers.textContent = count;
     }
 
-    const logoutButton = document.querySelector('.logout');
+    function addLogoutEvent() {
+
+        const logoutButton = document.querySelector('.logout');
     
-    logoutButton.addEventListener('click', async function(event) {
-        event.preventDefault();
-        try {
-            const response = await fetch('http://localhost:3000/auth/logout', {
-                method: 'POST',
-                credentials: 'include'
-            });
-            if (response.ok) {
-                
-                window.location.href = '../Authentication/Login.html';
-            } else {
-                throw new Error('Failed to logout. Please try again.');
+        logoutButton.addEventListener('click', async () => {
+            let response;
+            try {
+                response = await fetch('http://localhost:3000/auth/logout', {
+                    method: 'POST',
+                    credentials: 'include'
+                });
+    
+                if (!response.ok) {
+                    throw new Error('Logout failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
             }
-        } catch (error) {
-            console.error('Logout failed:', error.message);
-        }
-    });
+    
+            try {
+                const result = await response.json();
+                console.log(result.message);
+                window.location.href = `../Authentication/Login.html`;
+            } catch (error) {
+                console.log("logout error please!")
+            }
+        });
+    }
 });
