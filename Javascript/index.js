@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function(){
     const checkAuthentication = async () => {
         let response;
         try {
-            response = await fetch('http://localhost:3000/auth/authenticated', {
+            response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/authenticated', {
                 credentials: "include"
             });
             if (!response.ok) {
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function(){
     
     const Logout = async () => {
         try {
-            const response = await fetch('http://localhost:3000/auth/logout', {
+            const response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/logout', {
                 credentials: "include",
                 method: 'POST'
             });
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function(){
 // THE END OF LOGIN LOGOUT FUNCTIONALITY
 
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('http://localhost:3000/blog/all')
+    fetch('https://my-brand-backend-aldo-1.onrender.com/blog/all')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Failed to fetch blogs');

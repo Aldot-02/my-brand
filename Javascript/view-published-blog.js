@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const clickedBlogId = urlParams.get('id');
 
-    fetch(`http://localhost:3000/blog/${clickedBlogId}`)
+    fetch(`https://my-brand-backend-aldo-1.onrender.com/blog/${clickedBlogId}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Failed to fetch clicked blog');
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const content = commentForm.elements['username'].value;
 
                 try {
-                    const response = await fetch(`http://localhost:3000/blog/${clickedBlogId}`);
+                    const response = await fetch(`https://my-brand-backend-aldo-1.onrender.com/blog/${clickedBlogId}`);
                     if (!response.ok) {
                         throw new Error('Failed to fetch blog');
                     }
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     commentForm.reset();
 
-                    const updateResponse = await fetch(`http://localhost:3000/blog/${clickedBlogId}`, {
+                    const updateResponse = await fetch(`https://my-brand-backend-aldo-1.onrender.com/blog/${clickedBlogId}`, {
                         method: 'PATCH',
                         headers: {
                             'Content-Type': 'application/json'
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 likesNumber.textContent = clickedBlog.likes;
                 
-                fetch(`http://localhost:3000/blog/${clickedBlogId}`, {
+                fetch(`https://my-brand-backend-aldo-1.onrender.com/blog/${clickedBlogId}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json'
@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const relatedPostsContainer = document.querySelector('.related-posts');
 
-            fetch('http://localhost:3000/blog/all')
+            fetch('https://my-brand-backend-aldo-1.onrender.com/blog/all')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Failed to fetch related blogs');

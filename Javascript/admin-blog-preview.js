@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const checkAuthentication = async () => {
         let response;
         try {
-            response = await fetch('http://localhost:3000/auth/authenticated', {
+            response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/authenticated', {
                 credentials: "include"
             });
             if (!response.ok) {
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Admin name element not found');
             }
             
-            fetch(`http://localhost:3000/blog/${selectedBlogId}`)
+            fetch(`https://my-brand-backend-aldo-1.onrender.com/blog/${selectedBlogId}`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Failed to fetch selected blog');
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         selectedBlog.content = blogContent.innerHTML;
 
                         try {
-                            const response = await fetch(`http://localhost:3000/blog/${selectedBlogId}`, {
+                            const response = await fetch(`https://my-brand-backend-aldo-1.onrender.com/blog/${selectedBlogId}`, {
                                 method: 'PATCH',
                                 headers: {
                                     'Content-Type': 'application/json'
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
         logoutButton.addEventListener('click', async () => {
             let response;
             try {
-                response = await fetch('http://localhost:3000/auth/logout', {
+                response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/logout', {
                     method: 'POST',
                     credentials: 'include'
                 });

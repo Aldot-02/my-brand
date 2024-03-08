@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const checkAuthentication = async () => {
         let response;
         try {
-            response = await fetch('http://localhost:3000/auth/authenticated', {
+            response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/authenticated', {
                 credentials: "include"
             });
             if (!response.ok) {
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function fetchUsers(authenticatedUserId, isAdmin) {
         try {
-            const response = await fetch('http://localhost:3000/user');
+            const response = await fetch('https://my-brand-backend-aldo-1.onrender.com/user');
             const users = await response.json();
             users.forEach(user => {
                 if (user._id !== authenticatedUserId) {
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function deleteUser(userId, currentUserId, currentUserAdminStatus) {
         try {
-            const response = await fetch(`http://localhost:3000/user/${userId}`, {
+            const response = await fetch(`https://my-brand-backend-aldo-1.onrender.com/user/${userId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
         logoutButton.addEventListener('click', async () => {
             let response;
             try {
-                response = await fetch('http://localhost:3000/auth/logout', {
+                response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/logout', {
                     method: 'POST',
                     credentials: 'include'
                 });

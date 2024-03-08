@@ -1,7 +1,7 @@
 const checkAuthentication = async () => {
     let response;
     try {
-        response = await fetch('http://localhost:3000/auth/authenticated', {
+        response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/authenticated', {
             credentials: "include"
         });
         if (!response.ok) {
@@ -56,12 +56,12 @@ function editBlogBody() {
 }
 
 function previewBlog() {
-    sendDataToServer('http://localhost:3000/blog/', 'POST', retrieveBlogData());
+    sendDataToServer('https://my-brand-backend-aldo-1.onrender.com/blog/', 'POST', retrieveBlogData());
     window.location.href = '../Desktop/open-blog.html';
 }
 
 function publishBlog() {
-    sendDataToServer('http://localhost:3000/blog/', 'POST', retrieveBlogData());
+    sendDataToServer('https://my-brand-backend-aldo-1.onrender.com/blog/', 'POST', retrieveBlogData());
     window.location.href = '../Admin Panel/admin-blogs.html';
 }
 
@@ -120,7 +120,7 @@ function addLogoutEvent() {
     logoutButton.addEventListener('click', async () => {
         let response;
         try {
-            response = await fetch('http://localhost:3000/auth/logout', {
+            response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/logout', {
                 method: 'POST',
                 credentials: 'include'
             });

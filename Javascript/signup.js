@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (errors.length === 0) {
             try {
-                const response = await fetch('http://localhost:3000/auth/register', {
+                const response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/register', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const checkAuthentication = async () => {
         let response;
         try {
-            response = await fetch('http://localhost:3000/auth/authenticated', {
+            response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/authenticated', {
                 credentials: "include"
             });
             if (!response.ok) {
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     async function fetchUsers() {
         try {
-            const response = await fetch('http://localhost:3000/user');
+            const response = await fetch('https://my-brand-backend-aldo-1.onrender.com/user');
             const users = await response.json();
 
             updateTotalUsersCount(users.length);
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function fetchBlogs() {
         try {
-            const response = await fetch('http://localhost:3000/blog/all');
+            const response = await fetch('https://my-brand-backend-aldo-1.onrender.com/blog/all');
             const blogs = await response.json();
 
             updateTotalBlogsCount(blogs.length);
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
         logoutButton.addEventListener('click', async () => {
             let response;
             try {
-                response = await fetch('http://localhost:3000/auth/logout', {
+                response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/logout', {
                     method: 'POST',
                     credentials: 'include'
                 });

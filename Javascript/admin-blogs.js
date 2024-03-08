@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const checkAuthentication = async () => {
         let response;
         try {
-            response = await fetch('http://localhost:3000/auth/authenticated', {
+            response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/authenticated', {
                 credentials: "include"
             });
             if (!response.ok) {
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function fetchBlogs() {
-        fetch('http://localhost:3000/blog/all')
+        fetch('https://my-brand-backend-aldo-1.onrender.com/blog/all')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Failed to fetch blogs');
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const selectedBlogIds = Array.from(document.querySelectorAll('.post.selected')).map(post => post.dataset.id);
 
             try {
-                const response = await Promise.all(selectedBlogIds.map(id => fetch(`http://localhost:3000/blog/${id}`, { method: 'DELETE' })));
+                const response = await Promise.all(selectedBlogIds.map(id => fetch(`https://my-brand-backend-aldo-1.onrender.com/blog/${id}`, { method: 'DELETE' })));
                 const results = await Promise.all(response.map(res => res.json()));
 
                 console.log(results);
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
         logoutButton.addEventListener('click', async () => {
             let response;
             try {
-                response = await fetch('http://localhost:3000/auth/logout', {
+                response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/logout', {
                     method: 'POST',
                     credentials: 'include'
                 });
