@@ -1306,6 +1306,9 @@ center {
 .blog-page .blog-header .blog-reactions .likes{
     margin-right: 30px;
 }
+.liked {
+    background-color: #F45815;
+}
 
 .blog-page .blog-content {
     color: #ffffff80;
@@ -1960,7 +1963,7 @@ margin-bottom: 20px;
     }
     .blog-comments-section .user-comment {
         width: 100%;
-        border: 2px solid #F45815;
+        /* border: 2px solid #F45815; */
         height: auto;
         border-radius: 4px;
         position: relative;
@@ -2380,7 +2383,7 @@ margin-bottom: 20px;
     }
     .blog-comments-section .user-comment {
         width: 100%;
-        border: 2px solid #F45815;
+        /* border: 2px solid #F45815; */
         height: auto;
         border-radius: 4px;
         position: relative;
@@ -2828,7 +2831,7 @@ margin-bottom: 20px;
     }
     .blog-comments-section .user-comment {
         width: 100%;
-        border: 2px solid #F45815;
+        /* border: 2px solid #F45815; */
         height: auto;
         border-radius: 4px;
         position: relative;

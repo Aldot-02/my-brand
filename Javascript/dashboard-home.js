@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
         let response;
         try {
             response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/authenticated', {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
                 credentials: "include",
                 method: "GET"
             });
@@ -50,16 +53,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     async function fetchUsers() {
         try {
-            // const data = JSON.parse(localStorage.getItem("token"));
-            // console.log(data.accessToken);
 
             const response = await fetch('https://my-brand-backend-aldo-1.onrender.com/user', {
-                // headers: {
-                //     'access': `${data.accessToken}`
-                // },
-                // cookies: {
-                //     'access': `${data.accessToken}`
-                // }
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: "include",
             });
 
 
@@ -81,7 +80,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function fetchBlogs() {
         try {
-            const response = await fetch('https://my-brand-backend-aldo-1.onrender.com/blog/all');
+            const response = await fetch('https://my-brand-backend-aldo-1.onrender.com/blog/all', {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: "include",
+            });
             const blogs = await response.json();
 
             updateTotalBlogsCount(blogs.length);
@@ -114,7 +118,10 @@ document.addEventListener('DOMContentLoaded', function() {
             try {
                 response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/logout', {
                     method: 'POST',
-                    credentials: 'include'
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: "include",
                 });
     
                 if (!response.ok) {

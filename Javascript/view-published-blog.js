@@ -23,213 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const blogContent = document.querySelector('.blog-content');
             blogContent.innerHTML = formatContent(clickedBlog.content || "No content available");
 
-            // function displayComments() {
-            //     const commentsSection = document.querySelector('.blog-comments-section');
-            //     const commentsNumber = commentsSection.querySelector('.Comments-number');
-            //     const userCommentsContainer = commentsSection.querySelector('.user-comment');
-                
-            //     commentsNumber.textContent = clickedBlog.comments ? clickedBlog.comments.length : 0;
-            //     userCommentsContainer.innerHTML = '';
-
-            //     if (clickedBlog.comments) {
-            //         clickedBlog.comments.forEach(comment => {
-            //             const commentElement = document.createElement('div');
-            //             commentElement.classList.add('user-comment-content');
-
-            //             const commentAuthor = document.createElement('div');
-            //             commentAuthor.classList.add('comment-author');
-
-            //             const commentorProfile = document.createElement('div');
-            //             commentorProfile.classList.add('commentor-profile');
-            //             commentorProfile.innerHTML = '<i class="fa-regular fa-user"></i>';
-
-            //             const authorDetails = document.createElement('div');
-            //             authorDetails.classList.add('author-details');
-
-            //             const commentorName = document.createElement('span');
-            //             commentorName.classList.add('commentor');
-            //             commentorName.textContent = comment.name;
-
-            //             const commentDate = document.createElement('span');
-            //             commentDate.classList.add('comments-date');
-            //             commentDate.textContent = comment.date;
-
-            //             authorDetails.appendChild(commentorName);
-            //             authorDetails.appendChild(commentDate);
-
-            //             commentAuthor.appendChild(commentorProfile);
-            //             commentAuthor.appendChild(authorDetails);
-
-            //             const commentContent = document.createElement('div');
-            //             commentContent.classList.add('comment-content');
-
-            //             const commentText = document.createElement('p');
-            //             commentText.textContent = comment.content;
-
-            //             commentContent.appendChild(commentText);
-
-            //             commentElement.appendChild(commentAuthor);
-            //             commentElement.appendChild(commentContent);
-
-            //             userCommentsContainer.appendChild(commentElement);
-            //         });
-            //     }
-            // }
-
-            // function updateCommentsNumber() {
-            //     const commentsNumber = document.querySelector('.comments-nbr');
-            //     commentsNumber.textContent = clickedBlog.comments ? clickedBlog.comments.length : 0;
-            // }
-
-            // const commentForm = document.querySelector('.infoForm.authForm');
-            // commentForm.addEventListener('submit', async function(event) {
-            //     event.preventDefault();
-
-            //     const name = commentForm.elements['firstname'].value;
-            //     const email = commentForm.elements['lastname'].value;
-            //     const content = commentForm.elements['username'].value;
-
-            //     try {
-            //         const response = await fetch(`https://my-brand-backend-aldo-1.onrender.com/blog/${clickedBlogId}`);
-            //         if (!response.ok) {
-            //             throw new Error('Failed to fetch blog');
-            //         }
-            //         const clickedBlog = await response.json();
-
-            //         if (clickedBlog.comments && clickedBlog.comments.some(comment => comment.email === email)) {
-            //             alert("You have already commented on this blog with this email.");
-            //             return;
-            //         }
-
-            //         const newComment = {
-            //             name: name,
-            //             email: email,
-            //             content: content,
-            //             date: new Date().toLocaleDateString()
-            //         };
-
-            //         clickedBlog.comments = clickedBlog.comments || [];
-            //         clickedBlog.comments.push(newComment);
-
-            //         updateCommentsNumber();
-            //         displayComments();
-
-            //         commentForm.reset();
-
-            //         const updateResponse = await fetch(`https://my-brand-backend-aldo-1.onrender.com/blog/${clickedBlogId}`, {
-            //             method: 'PATCH',
-            //             headers: {
-            //                 'Content-Type': 'application/json'
-            //             },
-            //             body: JSON.stringify(clickedBlog)
-            //         });
-
-            //         if (!updateResponse.ok) {
-            //             throw new Error('Failed to update comments');
-            //         }
-            //     } catch (error) {
-            //         console.error('Error:', error);
-            //     }
-            // });
-            const commentForm = document.querySelector('.infoForm.authForm');
-            commentForm.addEventListener('submit', async function(event) {
-                event.preventDefault();
-
-                const content = commentForm.elements['username'].value;
-
-                try {
-                    const authResponse = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/authenticated', {
-                        credentials: "include",
-                        method: "GET"
-                    });
-                    if (!authResponse.ok) {
-                        throw new Error('User is not authenticated');
-                    }
-                    const userData = await authResponse.json();
-                    console.log(userData)
-
-                    const newComment = {
-                        userId: userData._id,
-                        name: `${userData.firstname} ${userData.lastname}`,
-                        email: userData.email,
-                        message: content
-                    };
-
-                    const commentResponse = await fetch(`https://my-brand-backend-aldo-1.onrender.com/blog/${clickedBlogId}/comment`, {
-                        method: 'POST',
-                        body: JSON.stringify(newComment)
-                    });
-                    console.log(newComment)
-
-                    if (!commentResponse.ok) {
-                        throw new Error('Failed to post comment');
-                    }
-
-                    commentForm.reset();
-                    updateCommentsNumber();
-                    displayComments();
-
-                } catch (error) {
-                    console.error('Error:', error);
-                    if (error.message === 'User is not authenticated') {
-                        window.location.href = '../Authentication/Login.html';
-                    }
-                }
-            });
-
-
-            // displayComments();
-            // updateCommentsNumber();
-
-            // const likeButton = document.querySelector('.Like-btn');
-            
-            // likeButton.addEventListener('click', async function() {
-            //     try {
-            //         const authResponse = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/authenticated', {
-            //             credentials: "include",
-            //             method: "GET"
-            //         });
-            //         if (!authResponse.ok) {
-            //             throw new Error('User is not authenticated');
-            //         }
-            //         const userData = await authResponse.json();
-            
-            //         const likeResponse = await fetch(`https://my-brand-backend-aldo-1.onrender.com/blog/${clickedBlogId}/like`, {
-            //             method: 'PATCH',
-            //             headers: {
-            //                 'Content-Type': 'application/json'
-            //             },
-            //             body: JSON.stringify({ userId: userData._id })
-            //         });
-            
-            //         if (!likeResponse.ok) {
-            //             throw new Error('Failed to update like');
-            //         }
-            
-            //         const updatedBlog = await likeResponse.json();
-            //         console.log(updatedBlog)
-            
-            //         // Update UI based on the updated blog data
-            //         if (updatedBlog.likes && Array.isArray(updatedBlog.likes)) {
-            //             if (updatedBlog.likes.includes(userData._id)) {
-            //                 likeButton.classList.add('liked');
-            //                 likeButton.style.backgroundColor = '#F45815';
-            //             } else {
-            //                 likeButton.classList.remove('liked');
-            //                 likeButton.style.backgroundColor = 'transparent';
-            //             }
-            //             console.log(updatedBlog.likes && Array.isArray(updatedBlog.likes))
-            //         } else {
-            //             likeButton.classList.remove('liked');
-            //             likeButton.style.backgroundColor = 'transparent';
-            //         }
-            //     } catch (error) {
-            //         console.error('Error:', error);
-            //         if (error.message === 'User is not authenticated') {
-            //             window.location.href = '../Authentication/Login.html';
-            //         }
-            //     }
-            // }); 
+            // LIKING FUNCTIONALITY
             
             const likesNumber = document.querySelector('.likes-nbr');
             if (clickedBlog.likes && Array.isArray(clickedBlog.likes)) {
@@ -240,8 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Update the like button color based on the user's like status
             const likeButton = document.querySelector('.Like-btn');
-
-            
             likeButton.addEventListener('click', async function() {
                 try {
                     const authResponse = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/authenticated', {
@@ -252,25 +44,26 @@ document.addEventListener('DOMContentLoaded', function() {
                         throw new Error('User is not authenticated');
                     }
                     const userData = await authResponse.json();
-                    if (clickedBlog.likes.includes(userData._id)) {
-                        likeButton.classList.add('liked');
-                        likeButton.style.backgroundColor = 'transparent';
-                    } else {
-                        likeButton.classList.remove('liked');
-                        likeButton.style.backgroundColor = '#F45815';
-                    }
 
                     const likeResponse = await fetch(`https://my-brand-backend-aldo-1.onrender.com/blog/${clickedBlogId}/like`, {
                         method: 'PATCH',
                         headers: {
                             'Content-Type': 'application/json'
                         },
+                        credentials: "include",
                         body: JSON.stringify({ userId: userData._id })
                     });
+                    
+                    if (clickedBlog.likes.includes(userData._id)) {
+                        likeButton.classList.remove('liked');
+                    } else {
+                        likeButton.classList.add('liked');
+                    }
 
                     if (!likeResponse.ok) {
                         throw new Error('Failed to update like');
                     }
+                    location.reload();
                     
                 } catch (error) {
                     console.error('Error:', error);
@@ -281,12 +74,125 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
 
+            // COMMENTING FUNCTIONALITY
+            const commentsNumber = document.querySelector('.comments-nbr');
+            commentsNumber.innerHTML = clickedBlog.comments.length || 0;
+
             const commentButton = document.querySelector('.comment-btn');
 
             commentButton.addEventListener('click', function() {
                 const commentForm = document.querySelector('.blog-comment-form');
                 commentForm.scrollIntoView({ behavior: 'smooth' });
             });
+
+
+            const commentForm = document.querySelector('.infoForm.authForm');
+            commentForm.addEventListener('submit', async function(event) {
+                event.preventDefault();
+            
+                const commentMessage = document.getElementById('comment-message').value;
+            
+                try {
+                    const authResponse = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/authenticated', {
+                        credentials: "include",
+                        method: "GET",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                    });
+            
+                    if (!authResponse.ok) {
+                        throw new Error('User is not authenticated');
+                    }
+            
+                    const userData = await authResponse.json();
+            
+                    const commentResponse = await fetch(`https://my-brand-backend-aldo-1.onrender.com/blog/${clickedBlogId}/comment`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        credentials: "include",
+                        body: JSON.stringify({
+                            message: commentMessage
+                        })
+                    });
+            
+                    if (!commentResponse.ok) {
+                        throw new Error('Failed to add comment');
+                    }
+            
+                    location.reload();
+                } catch (error) {
+                    console.error('Error:', error);
+                    if (error.message === 'User is not authenticated') {
+                        window.location.href = '../Authentication/Login.html';
+                    }
+                }
+            });
+
+            // ALL COMMENTS
+            async function fetchAndDisplayComments(blogId) {
+                try {
+                    const response = await fetch(`https://my-brand-backend-aldo-1.onrender.com/blog/${blogId}/comments`);
+                    const comments = await response.json();
+                    console.log(comments)
+
+                    const commentsSection = document.querySelector('.blog-comments-section');
+                    const commentsNumberSection = document.querySelector('.Comments-number');
+                    const userCommentsContainer = commentsSection.querySelector('.user-comment');
+            
+                    commentsNumberSection.innerHTML = clickedBlog.comments.length || 0;
+                    userCommentsContainer.innerHTML = '';
+                        
+                    comments.forEach(comment => {
+
+                        const commentElement = document.createElement('div');
+                        commentElement.classList.add('user-comment-content');
+
+                        const commentAuthor = document.createElement('div');
+                        commentAuthor.classList.add('comment-author');
+
+                        const commentorProfile = document.createElement('div');
+                        commentorProfile.classList.add('commentor-profile');
+                        commentorProfile.innerHTML = '<i class="fa-regular fa-user"></i>';
+
+                        const authorDetails = document.createElement('div');
+                        authorDetails.classList.add('author-details');
+
+                        const commentorName = document.createElement('span');
+                        commentorName.classList.add('commentor');
+                        commentorName.textContent = comment.name;
+
+                        const commentDate = document.createElement('span');
+                        commentDate.classList.add('comments-date');
+                        commentDate.textContent = comment.date;
+
+                        authorDetails.appendChild(commentorName);
+                        authorDetails.appendChild(commentDate);
+
+                        commentAuthor.appendChild(commentorProfile);
+                        commentAuthor.appendChild(authorDetails);
+
+                        const commentContent = document.createElement('div');
+                        commentContent.classList.add('comment-content');
+
+                        const commentText = document.createElement('p');
+                        commentText.textContent = comment.message;
+
+                        commentContent.appendChild(commentText);
+
+                        commentElement.appendChild(commentAuthor);
+                        commentElement.appendChild(commentContent);
+
+                        userCommentsContainer.appendChild(commentElement);
+                    });
+                } catch (error) {
+                    console.error('Error fetching comments:', error);
+                }
+            }
+
+            fetchAndDisplayComments(clickedBlogId);
 
             // Related posts
 

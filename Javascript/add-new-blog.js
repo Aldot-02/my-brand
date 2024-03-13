@@ -2,7 +2,10 @@ const checkAuthentication = async () => {
     let response;
     try {
         response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/authenticated', {
-            credentials: "include"
+            credentials: "include",
+            headers: {
+                'Content-Type': 'application/json'
+            },
         });
         if (!response.ok) {
             throw new Error('Response is not OK');
@@ -87,6 +90,7 @@ function sendDataToServer(url, method, data) {
         headers: {
             'Content-Type': 'application/json'
         },
+        credentials: "include",
         body: JSON.stringify(data)
     })
     .then(response => {
@@ -122,7 +126,10 @@ function addLogoutEvent() {
         try {
             response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/logout', {
                 method: 'POST',
-                credentials: 'include'
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: "include",
             });
 
             if (!response.ok) {

@@ -6,7 +6,10 @@ document.addEventListener('DOMContentLoaded', function() {
         let response;
         try {
             response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/authenticated', {
-                credentials: "include"
+                credentials: "include",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
             });
             if (!response.ok) {
                 throw new Error('Response is not OK');
@@ -27,7 +30,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Admin name element not found');
             }
             
-            fetch(`https://my-brand-backend-aldo-1.onrender.com/blog/${selectedBlogId}`)
+            fetch(`https://my-brand-backend-aldo-1.onrender.com/blog/${selectedBlogId}`, {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: "include",
+            })
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Failed to fetch selected blog');
@@ -79,6 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 headers: {
                                     'Content-Type': 'application/json'
                                 },
+                                credentials: "include",
                                 body: JSON.stringify(selectedBlog)
                             });
 
@@ -120,7 +129,10 @@ document.addEventListener('DOMContentLoaded', function() {
             try {
                 response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/logout', {
                     method: 'POST',
-                    credentials: 'include'
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: "include",
                 });
 
                 if (!response.ok) {

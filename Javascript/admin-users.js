@@ -5,7 +5,10 @@ document.addEventListener('DOMContentLoaded', function() {
         let response;
         try {
             response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/authenticated', {
-                credentials: "include"
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: "include",
             });
             if (!response.ok) {
                 throw new Error('Response is not OK');
@@ -42,7 +45,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function fetchUsers(authenticatedUserId, isAdmin) {
         try {
-            const response = await fetch('https://my-brand-backend-aldo-1.onrender.com/user');
+            const response = await fetch('https://my-brand-backend-aldo-1.onrender.com/user', {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: "include",
+            });
             const users = await response.json();
             users.forEach(user => {
                 if (user._id !== authenticatedUserId) {
@@ -83,6 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
+                credentials: "include",
                 body: JSON.stringify({
                     currentUserId,
                     currentUserAdminStatus
@@ -105,7 +114,10 @@ document.addEventListener('DOMContentLoaded', function() {
             try {
                 response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/logout', {
                     method: 'POST',
-                    credentials: 'include'
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: "include",
                 });
     
                 if (!response.ok) {

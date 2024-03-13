@@ -4,7 +4,10 @@ document.addEventListener('DOMContentLoaded', function() {
         let response;
         try {
             response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/authenticated', {
-                credentials: "include"
+                credentials: "include",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
             });
             if (!response.ok) {
                 throw new Error('Response is not OK');
@@ -42,7 +45,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function fetchBlogs() {
-        fetch('https://my-brand-backend-aldo-1.onrender.com/blog/all')
+        fetch('https://my-brand-backend-aldo-1.onrender.com/blog/all', {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: "include",
+        })
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Failed to fetch blogs');
@@ -98,7 +106,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const selectedBlogIds = Array.from(document.querySelectorAll('.post.selected')).map(post => post.dataset.id);
 
             try {
-                const response = await Promise.all(selectedBlogIds.map(id => fetch(`https://my-brand-backend-aldo-1.onrender.com/blog/${id}`, { method: 'DELETE' })));
+                const response = await Promise.all(selectedBlogIds.map(id => fetch(`https://my-brand-backend-aldo-1.onrender.com/blog/${id}`, { 
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: "include", 
+                })));
                 const results = await Promise.all(response.map(res => res.json()));
 
                 console.log(results);
@@ -120,7 +134,10 @@ document.addEventListener('DOMContentLoaded', function() {
             try {
                 response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/logout', {
                     method: 'POST',
-                    credentials: 'include'
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: "include",
                 });
     
                 if (!response.ok) {

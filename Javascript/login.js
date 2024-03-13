@@ -53,12 +53,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 const userData = await response.json();
                 
                 if (userData.isAdmin) {
-                    console.log(userData)
-                    localStorage.setItem("token", JSON.stringify(userData))
-                    console.log(localStorage.getItem("token"))
                     window.location.href = `../Admin%20Panel/admin-home.html`;
                 } else {
-                    console.log(userData)
                     window.location.href = `../index.html`;
                 }
             } catch (error) {
