@@ -57,12 +57,12 @@ function editBlogBody() {
 
 function previewBlog() {
     sendDataToServer('https://my-brand-backend-aldo-1.onrender.com/blog/', 'POST', retrieveBlogData());
-    window.location.href = '../Desktop/open-blog.html';
+    // window.location.href = '../Desktop/open-blog.html';
 }
 
 function publishBlog() {
     sendDataToServer('https://my-brand-backend-aldo-1.onrender.com/blog/', 'POST', retrieveBlogData());
-    window.location.href = '../Admin Panel/admin-blogs.html';
+    // window.location.href = '../Admin Panel/admin-blogs.html';
 }
 
 function retrieveBlogData() {

@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
         let response;
         try {
             response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/authenticated', {
-                credentials: "include"
+                credentials: "include",
+                method: "GET"
             });
             if (!response.ok) {
                 throw new Error('Response is not OK');
@@ -49,7 +50,19 @@ document.addEventListener('DOMContentLoaded', function() {
     
     async function fetchUsers() {
         try {
-            const response = await fetch('https://my-brand-backend-aldo-1.onrender.com/user');
+            // const data = JSON.parse(localStorage.getItem("token"));
+            // console.log(data.accessToken);
+
+            const response = await fetch('https://my-brand-backend-aldo-1.onrender.com/user', {
+                // headers: {
+                //     'access': `${data.accessToken}`
+                // },
+                // cookies: {
+                //     'access': `${data.accessToken}`
+                // }
+            });
+
+
             const users = await response.json();
 
             updateTotalUsersCount(users.length);
@@ -120,4 +133,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+
+
 });
+
