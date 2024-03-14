@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../styles/admin-panel.css">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <div class="container">
+        <div class="hamburger">
+            <div class="bar"></div>
+        </div>
+        <section class="sidebar-nav">
+            <div class="sidebar-header menu-link">
+                <div class="admin-profile">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+                <div class="admin-details-top">
+                    <p class="admin-name"></p>
+                    <p class="admin-role">Administrator</p>
+                </div>
+            </div>
+            <div class="sidebar-navigation">
+                <a href="#"></a><div class="nav-link menu-link active">
+                    <div class="nav-card">
+                        <i class="fa-solid fa-house"></i>
+                        <p>Dashboard</p>
+                    </div>
+                </div>
+                <a href="admin-users.html">
+                    <div class="nav-link menu-link">
+                        <div class="nav-card">
+                            <i class="fa-solid fa-users"></i>
+                            <p>Users</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="admin-blogs.html">
+                    <div class="nav-link menu-link">
+                        <div class="nav-card">
+                            <i class="fa-solid fa-blog"></i>
+                            <p>Blogs</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="admin-projects.html">
+                    <div class="nav-link menu-link">
+                        <div class="nav-card">
+                            <i class="fa-solid fa-bars-progress"></i>
+                            <p>Work</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="admin-media.html">
+                    <div class="nav-link menu-link">
+                        <div class="nav-card">
+                            <i class="fa-solid fa-photo-film"></i>
+                            <p>Certifications</p>
+                        </div>
+                    </div>
+                </a>
+                <div class="nav-link menu-link" class="logout">
+                    <div class="nav-card">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <p>Logout</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-mobile-nav">
+                <a href="#">
+                    <i class="fa-solid fa-house home-icon"></i>
+                </a>
+                <a href="admin-users.html">
+                    <i class="fa-solid fa-users"></i>
+                </a>
+                <a href="admin-blogs.html">
+                    <i class="fa-solid fa-blog"></i>
+                </a>
+                <a href="admin-projects.html">
+                    <i class="fa-solid fa-bars-progress"></i>
+                </a>
+                <a href="admin-media.html">
+                    <i class="fa-solid fa-photo-film"></i>
+                </a>
+                <a href="../Authentication/Login.html" class="logout">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </a>
+            </div>
+        </section>
+        <section class="dashboard-content">
+            <div class="searchbar-top">
+                <div class="top-header-nav">
+                    <span>Dashboard</span>
+                </div>
+                <div class="searchbar-section">
+                    <form>
+                        <input type="search" name="" id="" placeholder="Search" class="search">
+                    </form>
+                    <div class="searchbar-icons">
+
+                        <i class="fa-solid fa-bell"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-main-content">
+                <div class="left-stats-col">
+                    <div class="left-top-stats">
+                        <div class="left-top-stats-card">
+                            <div class="card-header">
+                                <i class="fa-regular fa-user"></i>
+                                <p>Total users</p>
+                            </div>
+                            <div class="card-numbers">
+                                <p class="color">69</p>
+                            </div>
+                        </div>
+                        <div class="left-top-stats-card">
+                            <div class="card-header">
+                                <i class="fa-regular fa-user"></i>
+                                <p>Total Blogs</p>
+                            </div>
+                            <div class="card-numbers">
+                                <p class="color blogs-nbr">69</p>
+                            </div>
+                        </div>
+                        <div class="left-top-stats-card">
+                            <div class="card-header">
+                                <i class="fa-regular fa-user"></i>
+                                <p>Total Projects</p>
+                            </div>
+                            <div class="card-numbers">
+                                <p class="color">69</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="left-stats-users">
+                        <h3>Latest Registered Users</h3>
+                        <table id="user-table">
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email Address</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="right-stats-col">
+                    <p>All Blogs Were Liked By <span class="color">123</span> People.</p>
+                    <p>All Projects Were Opened By <span class="color">123</span> People.</p>
+                    <p><span class="color">123</span> People Downloaded The Resume</p>
+                    <p><span class="color">Want see who they are?</span></p>
+                    <p>Navigate me and get to know more details about who they are.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="../Javascript/dashboard-home.js">
+    </script>
+</body>
+</html>

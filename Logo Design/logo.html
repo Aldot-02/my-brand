@@ -1,0 +1,142 @@
+<!-- THIS FILE IS FOR DESIGNING THE LOGO OF MY BRAND USING CANVAS. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Diamond Animation</title>
+<style>
+    body, html {
+        background-color: #0A192F;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+    }
+  
+    canvas {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: none;
+    }
+  </style>
+  </head>
+  <body>
+</head>
+<body>
+
+<canvas id="myCanvas" width="240" height="240"></canvas>
+
+<script>
+
+var canvas = document.getElementById('myCanvas');
+var ctx = canvas.getContext('2d');
+ctx.strokeStyle = '#F45815';
+ctx.lineWidth = 4;
+
+var diamonds = [
+  { size: 120, progress: 0 },
+  { size: 100, progress: 0 },
+  { size: 80, progress: 0 },
+  { size: 60, progress: 0 }
+];
+
+var drawSpeed = 0.3;
+
+function drawLetterA() {
+  ctx.font = '30px Arial';
+  ctx.fillStyle = '#F45815';
+  ctx.textAlign = 'center';
+  ctx.fillText('A', canvas.width / 2, canvas.height / 2 + 6);
+}
+
+// Function to draw a diamond (rotated square)
+function drawDiamond(x, y, size, progress) {
+  var halfSize = size / 2;
+  var quarterSize = size / 4;
+
+  ctx.save();
+  ctx.translate(x, y);
+
+  ctx.beginPath();
+
+  // Top side
+  if (progress < quarterSize) {
+    ctx.moveTo(0, -halfSize);
+    ctx.lineTo(progress * 2, -halfSize + progress);
+  } else {
+    ctx.moveTo(0, -halfSize);
+    ctx.lineTo(halfSize, 0);
+  }
+
+  // Right side
+  if (progress < quarterSize * 2 && progress >= quarterSize) {
+    ctx.moveTo(halfSize, 0);
+    ctx.lineTo(halfSize - (progress - quarterSize), progress - quarterSize);
+  } else if (progress >= quarterSize * 2) {
+    ctx.moveTo(halfSize, 0);
+    ctx.lineTo(0, halfSize);
+  }
+
+  // Bottom side
+  if (progress < quarterSize * 3 && progress >= quarterSize * 2) {
+    ctx.moveTo(0, halfSize);
+    ctx.lineTo(-(progress - quarterSize * 2) * 2, halfSize - (progress - quarterSize * 2));
+  } else if (progress >= quarterSize * 3) {
+    ctx.moveTo(0, halfSize);
+    ctx.lineTo(-halfSize, 0);
+  }
+
+  // Left side
+    if (progress >= quarterSize * 3) {
+        var leftProgress = progress - quarterSize * 3;
+        ctx.moveTo(-halfSize, 0);
+        if (progress < size) {
+            ctx.lineTo(-halfSize + leftProgress, -leftProgress);
+        } else {
+            ctx.lineTo(0, -halfSize);
+        }
+    }
+
+
+  ctx.stroke();
+  ctx.restore();
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  var allDiamondsComplete = true;
+
+  // Draw each diamond with its current progress
+  var centerX = canvas.width / 2;
+  var centerY = canvas.height / 2;
+  diamonds.forEach(function(diamond) {
+    drawDiamond(centerX, centerY, diamond.size, diamond.progress);
+
+    // Increase the progress
+    if (diamond.progress < diamond.size) {
+      diamond.progress += drawSpeed;
+      allDiamondsComplete = false;
+    }
+  });
+
+  // If all diamonds are complete, draw the letter A
+  if (allDiamondsComplete) {
+    drawLetterA();
+  } else {
+    // If not all diamonds are complete, continue the animation
+    requestAnimationFrame(animate);
+  }
+}
+
+// Start the animation
+animate();
+
+</script>
+</body>
+</html>
