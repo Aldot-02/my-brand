@@ -39,34 +39,27 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     };
     
-    const Logout = async () => {
-        try {
-            const response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/logout', {
-                credentials: "include",
-                method: 'POST'
-            });
-            if (!response.ok) {
-                console.log("logout failed")
-                throw new Error('Logout Failed');
-            }
-            else {
-                console.log("logout successful")
-                loginLogoutButton.textContent === 'Login'
-                return true;
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            return false;
+    async function logout() {
+        const response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/logout', {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: "include",
+            method: "POST"
+        });
+        if(!response.ok){
+            console.log("Failed to logout");
+        } else {
+            window.location.href = '../Authentication/login.html';
+            console.log("Logout was successful");
         }
     };
+
        
     checkAuthentication().then(isAuthenticated => {
         if (isAuthenticated) {
-            loginLogoutButton.onclick = function() {
-                Logout();
-                window.location.href = `./index.html`
-                return false;
-            }
+            loginLogoutButton.addEventListener('click', logout);
+            return false;
         }else {
             loginLogoutButton.onclick = function() {
                 if(loginLogoutButton.textContent === 'Login') {

@@ -37,8 +37,9 @@ const checkAuthentication = async () => {
 
 checkAuthentication().then(isAuthenticated => {
     if (isAuthenticated) {
-        addLogoutEvent();
         enableAuthenticatedFunctionality();
+        const logoutBtn = document.querySelector('.logout');
+        logoutBtn.addEventListener('click', logout);
     }
 });
 
@@ -84,6 +85,13 @@ function retrieveBlogData() {
     };
 }
 
+function togglePopup() {
+    var blur = document.getElementById('blur');
+    blur.classList.toggle('blur-popup');
+    var popup = document.getElementById('popup');
+    popup.classList.toggle('blur-popup');
+}
+
 function sendDataToServer(url, method, data) {
     fetch(url, {
         method: method,
@@ -104,6 +112,7 @@ function sendDataToServer(url, method, data) {
         window.location.href = '../Admin Panel/admin-blogs.html';
     })
     .catch(error => {
+        togglePopup();
         console.error('Error:', error);
     });
 }
@@ -118,33 +127,18 @@ function addMedia(event) {
     reader.readAsDataURL(event.target.files[0]);
 }
 
-function addLogoutEvent() {
-    const logoutButton = document.querySelector('.logout');
-
-    logoutButton.addEventListener('click', async () => {
-        let response;
-        try {
-            response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/logout', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                credentials: "include",
-            });
-
-            if (!response.ok) {
-                throw new Error('Logout failed');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-        }
-
-        try {
-            const result = await response.json();
-            console.log(result.message);
-            window.location.href = `../Authentication/Login.html`;
-        } catch (error) {
-            console.log("logout error please!")
-        }
+async function logout() {
+    const response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/logout', {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        credentials: "include",
+        method: "POST"
     });
-}
+    if(!response.ok){
+        console.log("Failed to logout");
+    } else {
+        window.location.href = '../Authentication/login.html';
+        console.log("Logout was successful")
+    }
+};

@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             }
 
                             console.log('Blog updated successfully');
-                            window.location.href = '../Admin Panel/admin-blogs.html';
+                            displayConfirmationPopup();
                         } catch (error) {
                             console.error('Error updating blog:', error);
                         }
@@ -113,42 +113,44 @@ document.addEventListener('DOMContentLoaded', function() {
             return false;
         }
     };
+    
 
     checkAuthentication().then(isAuthenticated => {
         if (isAuthenticated) {
-            addLogoutEvent();
+            const logoutBtn = document.querySelector('.logout');
+            logoutBtn.innerHTML = "Logout"
+            logoutBtn.addEventListener('click', logout);
         }
     });
 
-    function addLogoutEvent() {
+    async function logout() {
+        const response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/logout', {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: "include",
+            method: "POST"
+        });
+        if(!response.ok){
+            console.log("Failed to logout");
+        } else {
+            window.location.href = '../Authentication/login.html';
+            console.log("Logout was successful")
+        }
+    };
 
-        const logoutButton = document.querySelector('.logout');
+    function displayConfirmationPopup() {
+        const popup = document.getElementById('popup');
+        popup.querySelector('p').textContent = 'Blog updated successfully. Click Close to continue.';
+        popup.classList.add('blur-popup');
 
-        logoutButton.addEventListener('click', async () => {
-            let response;
-            try {
-                response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/logout', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    credentials: "include",
-                });
+        var blur = document.getElementById('blur');
+        blur.classList.toggle('blur-popup');
 
-                if (!response.ok) {
-                    throw new Error('Logout failed');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            }
 
-            try {
-                const result = await response.json();
-                console.log(result.message);
-                window.location.href = `../Authentication/Login.html`;
-            } catch (error) {
-                console.log("logout error please!")
-            }
+        const closeButton = document.getElementById('close-popup');
+        closeButton.addEventListener('click', function() {
+            window.location.href = '../Admin Panel/admin-blogs.html';
         });
     }
 });

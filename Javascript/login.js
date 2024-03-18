@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 if (!response.ok) {
+                    await displayError(form.elements['password'], "Account with such credentials not found");
                     throw new Error('Login failed. Please check your email and password.');
                 }
 

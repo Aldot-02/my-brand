@@ -11,7 +11,11 @@
     <title>Manage Your Users</title>
 </head>
 <body>
-    <div class="container">
+    <div id="popup">
+        <p>User Deleted successfully</p>
+        <a href="#" onclick="togglePopup()">Close</a>
+    </div>
+    <div class="container" id="blur">
         <div class="hamburger">
             <div class="bar"></div>
         </div>
@@ -66,14 +70,12 @@
                         </div>
                     </div>
                 </a>
-                <a href="admin-settings.html">
-                    <div class="nav-link menu-link">
-                        <div class="nav-card">
-                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                            <p>Logout</p>
-                        </div>
+                <div class="nav-link menu-link logout">
+                    <div class="nav-card">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <p>Logout</p>
                     </div>
-                </a>
+                </div>
             </div>
             <div class="dashboard-mobile-nav">
                 <a href="admin-home.html">

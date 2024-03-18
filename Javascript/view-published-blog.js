@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const clickedBlogId = urlParams.get('id');
+    
+
 
     fetch(`https://my-brand-backend-aldo-1.onrender.com/blog/${clickedBlogId}`)
         .then(response => {
@@ -10,6 +12,65 @@ document.addEventListener('DOMContentLoaded', function() {
             return response.json();
         })
         .then(clickedBlog => {
+
+            // logout functinality
+
+            const loginLogoutButton = document.getElementById('login-logout-button');
+
+            async function checkAuthentication() {
+                try {
+                    const response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/authenticated', {
+                        credentials: "include",
+                        method: "GET"
+                    });
+                    if (!response.ok) {
+                        loginLogoutButton.textContent = 'Login';
+                        console.log("You are not logged in")
+                        loginLogoutButton.addEventListener('click', redirectToLogin);
+                    } else {
+                        console.log("You are logged in")
+                        loginLogoutButton.textContent = 'Logout';
+                        loginLogoutButton.addEventListener('click', logout);
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    window.location.href = `./open-blog.html`
+                }
+            }
+            
+            async function logout() {
+                try {
+                    const response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/logout', {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        credentials: "include",
+                        method: "POST"
+                    });
+                    if(!response.ok){
+                        console.log("Failed to logout");
+                    } else {
+                        const urlParams = new URLSearchParams(window.location.search);
+                    urlParams.delete('id');
+                    const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
+                    window.history.replaceState({}, document.title, newUrl);
+                    window.location.replace('../Authentication/login.html');
+                    console.log("Logout was successful");
+                    }
+                } catch (error) {
+                    console.error('Failed to fetch logout:', error.message);
+                }
+            }
+
+            function redirectToLogin() {
+                console.log("told to go to login page")
+                window.location.href = './Authentication/Login.html';
+            }
+
+            checkAuthentication()
+            // end of logout functionality
+
+
             document.querySelector('h1').textContent = clickedBlog.title || "Blog Title";
 
             const authorDetailsTop = document.querySelector('.author-details-top');
