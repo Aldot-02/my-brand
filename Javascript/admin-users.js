@@ -39,7 +39,8 @@ document.addEventListener('DOMContentLoaded', function() {
     checkAuthentication().then(user => {
         if (user) {
             fetchUsers(user._id, user.isAdmin);
-            addLogoutEvent();
+            const logoutBtn = document.querySelector('.logout');
+            logoutBtn.addEventListener('click', logout);
         }
     });
 
@@ -76,12 +77,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (confirmation) {
                     await deleteUser(userId, authenticatedUserId, isAdmin);
                     newRow.remove();
-                    alert('User deleted successfully');
+                    togglePopup();
                 }
             } catch (error) {
                 console.error('Error deleting user:', error.message);
             }
         });
+        
+        window.togglePopup = function() {
+            var blur = document.getElementById('blur');
+            blur.classList.toggle('blur-popup');
+            var popup = document.getElementById('popup');
+            popup.classList.toggle('blur-popup');
+        }
+        
     }
 
     async function deleteUser(userId, currentUserId, currentUserAdminStatus) {
@@ -106,34 +115,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function addLogoutEvent() {
-        const logoutButton = document.querySelector('.logout');
-    
-        logoutButton.addEventListener('click', async () => {
-            let response;
-            try {
-                response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/logout', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    credentials: "include",
-                });
-    
-                if (!response.ok) {
-                    throw new Error('Logout failed');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            }
-    
-            try {
-                const result = await response.json();
-                console.log(result.message);
-                window.location.href = `../Authentication/Login.html`;
-            } catch (error) {
-                console.log("logout error please!")
-            }
+    async function logout() {
+        const response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/logout', {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: "include",
+            method: "POST"
         });
-    }
+        if(!response.ok){
+            console.log("Failed to logout");
+        } else {
+            window.location.href = '../Authentication/login.html';
+            console.log("Logout was successful")
+        }
+    };
 });
+
+function toggle(){
+    var blur = document.getElementById('blur');
+    blur.classList.toggle('blur-popup')
+    var popup = document.getElementById('popup');
+    popup.classList.toggle('blur-popup')
+}

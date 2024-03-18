@@ -40,7 +40,8 @@ document.addEventListener('DOMContentLoaded', function() {
     checkAuthentication().then(isAuthenticated => {
         if (isAuthenticated) {
             fetchBlogs();
-            addLogoutEvent();
+            const logoutBtn = document.querySelector('.logout');
+            logoutBtn.addEventListener('click', logout);
         }
     });
 
@@ -106,54 +107,51 @@ document.addEventListener('DOMContentLoaded', function() {
             const selectedBlogIds = Array.from(document.querySelectorAll('.post.selected')).map(post => post.dataset.id);
 
             try {
-                const response = await Promise.all(selectedBlogIds.map(id => fetch(`https://my-brand-backend-aldo-1.onrender.com/blog/${id}`, { 
-                    method: 'DELETE',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    credentials: "include", 
-                })));
-                const results = await Promise.all(response.map(res => res.json()));
+                const confirmation = confirm('Are you sure you want to delete the selected blog(s)?');
+                if (confirmation) {
+                    const response = await Promise.all(selectedBlogIds.map(id => fetch(`https://my-brand-backend-aldo-1.onrender.com/blog/${id}`, { 
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        credentials: "include", 
+                    })));
+                    const results = await Promise.all(response.map(res => res.json()));
 
-                console.log(results);
-                document.querySelectorAll('.post.selected').forEach(post => {
-                    post.remove();
-                });
+                    console.log(results);
+                    document.querySelectorAll('.post.selected').forEach(post => {
+                        post.remove();
+                    });
+
+                    togglePopup();
+                }
             } catch (error) {
                 console.error('Error deleting blogs:', error);
             }
         });
+
+        window.togglePopup = function() {
+            var blur = document.getElementById('blur');
+            blur.classList.toggle('blur-popup');
+            var popup = document.getElementById('popup');
+            popup.classList.toggle('blur-popup');
+        }
+
     }
 
-    function addLogoutEvent() {
-
-        const logoutButton = document.querySelector('.logout');
-    
-        logoutButton.addEventListener('click', async () => {
-            let response;
-            try {
-                response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/logout', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    credentials: "include",
-                });
-    
-                if (!response.ok) {
-                    throw new Error('Logout failed');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            }
-    
-            try {
-                const result = await response.json();
-                console.log(result.message);
-                window.location.href = `../Authentication/Login.html`;
-            } catch (error) {
-                console.log("logout error please!")
-            }
+    async function logout() {
+        const response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/logout', {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: "include",
+            method: "POST"
         });
-    }
+        if(!response.ok){
+            console.log("Failed to logout");
+        } else {
+            window.location.href = '../Authentication/login.html';
+            console.log("Logout was successful")
+        }
+};
 });

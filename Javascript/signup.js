@@ -78,6 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 if (!response.ok) {
+                    displayError(form.elements['username'], "Registration failed, please try again. This account already exist.");
                     throw new Error('Registration failed. Please try again.');
                 }
 

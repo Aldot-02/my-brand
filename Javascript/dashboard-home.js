@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const totalUsersElement = document.querySelector('.card-numbers p');
     const totalBlogsUsers = document.querySelector('.card-numbers .blogs-nbr');
 
+
     const checkAuthentication = async () => {
         let response;
         try {
@@ -45,7 +46,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isAuthenticated) {
             fetchUsers();
             fetchBlogs();
-            addLogoutEvent();
+            const logoutBtn = document.querySelector('.logout');
+            logoutBtn.addEventListener('click', logout);
+            
         }
     });
 
@@ -108,40 +111,28 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateTotalBlogsCount(count) {
         totalBlogsUsers.textContent = count;
     }
-
-    function addLogoutEvent() {
-
-        const logoutButton = document.querySelector('.logout');
-    
-        logoutButton.addEventListener('click', async () => {
-            let response;
-            try {
-                response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/logout', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    credentials: "include",
-                });
-    
-                if (!response.ok) {
-                    throw new Error('Logout failed');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            }
-    
-            try {
-                const result = await response.json();
-                console.log(result.message);
-                window.location.href = `../Authentication/Login.html`;
-            } catch (error) {
-                console.log("logout error please!")
-            }
-        });
-    }
-
-
-
 });
 
+async function logout() {
+        const response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/logout', {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: "include",
+            method: "POST"
+        });
+        if(!response.ok){
+            console.log("Failed to logout");
+        } else {
+            eraseCookies();
+            window.location.href = '../Authentication/login.html';
+            console.log("Logout was successful")
+        }
+};
+
+function eraseCookies() {
+    const cookies = document.cookie
+    for (const access of cookies) {
+        document.cookie = `${access}=;expires=${new Date(0).toUTCString()}`;
+    }
+}
