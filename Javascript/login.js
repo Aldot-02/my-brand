@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
+
+
     const form = document.querySelector('.infoForm');
 
     form.addEventListener('submit', async function(event) {
@@ -78,4 +80,40 @@ document.addEventListener('DOMContentLoaded', function() {
         errorElement.style.display = 'none';
         input.style.borderBottomColor = '#F45815';
     }
+
+    
+
+    const checkAuthentication = async () => {
+        let response;
+        try {
+            response = await fetch('https://my-brand-backend-aldo-1.onrender.com/auth/authenticated', {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: "include",
+                method: "GET"
+            });
+            if (!response.ok) {
+                // window.location.href = './login.html'
+                throw new Error('Response is not OK');
+            }
+            const userData = await response.json();
+            console.log(userData)
+            return userData;
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
+
+    
+    checkAuthentication().then(userData => {
+        if (userData) {
+            if (userData.isAdmin) {
+                window.location.href = '../Admin%20Panel/admin-home.html';
+            } else {
+                window.location.href = '../index.html';
+            }
+        }
+    });
 });
