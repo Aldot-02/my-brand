@@ -111,8 +111,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (userData) {
             if (userData.isAdmin) {
                 window.location.href = '../Admin%20Panel/admin-home.html';
-            } else {
-                window.location.href = '../index.html';
             }
         }
     });
