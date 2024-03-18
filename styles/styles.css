@@ -21,17 +21,15 @@ body {
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
-.container#blur.blur-popup {
-    filter: blur(2px);
+#blur.blur-popup {
+    filter: blur(5px);
     pointer-events: none;
     user-select: none;
 }
 #popup {
     position: fixed;
-    /* top: 50%; */
-    /* left: 50%; */
     transform: translate(-50%, -50%);
-    width: 25%;
+    width: 35%;
     padding: 50px;
     box-shadow: 0 5px 30px #f4581562;
     background-color: #fff;
@@ -40,6 +38,12 @@ body {
     transform: 0.5s;
     z-index: 999;
     border-radius: 5px;
+}
+#popup h1{
+    font-weight: bolder;
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #F45815;
 }
 #popup.blur-popup {
     top: 50%;

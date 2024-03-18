@@ -135,14 +135,17 @@ function sendEmail() {
     }).then(
         message => {
             if (message == "OK") {
-                Swal.fire({
-                    title: "Success!",
-                    text: "Message sent successfully!",
-                    icon: "success"
-                  });
+                togglePopup();
             }
           }
     );
+
+    window.togglePopup = function() {
+        var blur = document.getElementById('blur');
+        blur.classList.toggle('blur-popup');
+        var popup = document.getElementById('popup');
+        popup.classList.toggle('blur-popup');
+    }
 }
 
 // Checking inputs

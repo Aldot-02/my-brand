@@ -39,7 +39,7 @@ body {
     width: 100vw;
     height: 100vh;
 }
-.container#blur.blur-popup {
+#blur.blur-popup {
     filter: blur(2px);
     pointer-events: none;
     user-select: none;
